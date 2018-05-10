@@ -1,8 +1,12 @@
 module.exports = {
     title: 'Mobile Money API',
-    description: "Mobile Money Payments API in Kenya (MPESA, EQUITY/EQUITEL,T-CASH). Supports B2B, B2C and C2B ",
+    description: "Mobile Money Payments API in Kenya (MPESA, EQUITEL, Airtel Money,T-CASH). Supports B2B, B2C and C2B ",
     home: true,
     serviceWorker: true,
+    head: [
+        ['link', {rel: 'icon', href: `/favicon.ico`}]
+    ],
+    ga: 'UA-119008638-1',
     themeConfig: {
         repo: 'samerior/mobile-money',
         // editLinks: true,
