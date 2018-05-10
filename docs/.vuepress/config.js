@@ -26,7 +26,11 @@ module.exports = {
                 title: 'Mpesa',
                 collapsable: false,
                 children: [
-                    '/mpesa/'
+                    '/guide/mpesa/',
+                    ['/guide/mpesa/register', 'Register URL'],
+                    ['/guide/mpesa/stk', 'STK Push'],
+                    ['/guide/mpesa/c2b', 'C2B Events'],
+                    ['/guide/mpesa/faq', 'FAQ']
                 ]
             },
         ]
