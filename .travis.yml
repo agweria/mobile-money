@@ -1,12 +1,13 @@
 language: php
+
 notifications:
   email: false
   slack: dervisgroup:EqIm58uQMIDcaSc9qyGUg1EK
 
 php:
+  - 7.1.3
   - 7.2
-# This triggers builds to run on the new TravisCI infrastructure.
-# See: http://docs.travis-ci.com/user/workers/container-based-infrastructure/
+
 sudo: false
 
 ## Cache composer
@@ -14,15 +15,12 @@ cache:
   directories:
     - $HOME/.composer/cache
 
-before_install:
-  - composer self-update
-  - composer global require dervisgroup/mobile-money:dev-master
-
 before_script:
   - travis_retry composer update ${COMPOSER_FLAGS} --no-interaction --prefer-dist
 
 script:
-  - vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
+  - vendor/bin/phpcs --standard=psr2 src/
+  - vendor/bin/phpunit
 
 after_script:
     - wget https://scrutinizer-ci.com/ocular.phar
