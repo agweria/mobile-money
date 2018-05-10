@@ -7,15 +7,17 @@ These include:
 * _B2C (Business to Customer)_ - This enables business to send money directly to a customer's phone number from their bulk account. Can be used for *Salary Payments*, *Business Payment* or *Promotion Payment* 
 * _B2B (Business to Business)_ - This enables business to pay other businesses. It's the same as B2C but instead of sending money to a personal phone number, you sent to a paybill or till number. 
 
-### Getting Started
+## Getting Started
 
 #### Step 1: Creating an account on MPESA G2 Portal
 The MPESA G2 portal is an online platform where merchants access paybill or till number transactions. The purpose of this step is to create a user who will be sent a One Time Password (OTP) before going live. Although online, you need to install a certificate in your Windows Internet Explorer. Below is the procedure:
 
 To request the weekly certificate password to setup the MPESA portal, kindly send a blank email to *M-pesaCertpassword@safaricom.co.ke*
-Click on the link in the autoresponder email to request the certificate. 
+Click on the link in the auto-responder email to request the certificate. 
 
-> Unfortunately, MPESA will not inform you when the certificate is generated and you'll need to go back to the link in the email to install the certificate in Windows Internet Explorer. But you can use Chrome after installing. 
+::: warning Certificate Notification
+Unfortunately, MPESA will not inform you when the certificate is generated and you'll need to go back to the link in the email to install the certificate in Windows Internet Explorer. But you can use Chrome after installing. 
+:::
 
 If you don't have an account setup, kindly contact MPESA Business Support on M-PESABusiness@safaricom.co.ke or 0722002222 and request them to setup for you an account on MPESA G2 portal
 Login to the MPESA portal by going to [https://org.ke.m-pesa.com](https://org.ke.m-pesa.com/), go to  *Operator Management* and create a user and give the user `Business Manager` and all roles that have an `API` word in them
@@ -28,13 +30,17 @@ The purpose of this step is to be able to create an app. There is the test app a
 
 Go to MPESA Developer Portal (see link below) and create an account
 
-> Create an app and get the consumer key and consumer secret
+::: tip
+Create an app and get the consumer key and consumer secret
+:::
 
 #### Step 3: Sandbox and Development
 This library will enable you to register endpoint urls and test the API's.
  During this step you'll use the Consumer Key's and Consumer Secret of the test app created in Step 2. 
- >The URL you register need to be SSL or https. You can get a certificate from MPESA and install it on your server or use Lets Encrpt 
 
+::: danger Using Non Secure urls
+The URL you register need to be SSL or https. You can get a certificate from MPESA and install it on your server or use Lets Encrpt 
+:::
 
 #### Step 4: Going live 
 After making sure that your code is working correctly, you'll need to go live that is a four sub step processes that enables you to verify you are the actual owner of the API by sending a one time password to the phone number of the user you created in Step 1. 

@@ -15,7 +15,7 @@ class SandboxAuthTest extends TestCase
         mpesa_request('0799123456', 1, 'test', 'tests');
     }
 
-    /** @test */
+    /** @ignore */
     public function it_gets_tokens()
     {
         /** @var Authenticator $authenticator */

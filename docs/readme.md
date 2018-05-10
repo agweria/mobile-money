@@ -6,7 +6,7 @@ actionLink: /guide/
 
 features:
 - title: All Players
-  details: This package works for Mpesa, Equitel, T-cash and Airtel MOney.
+  details: This package works for Mpesa, Airtel Money, Equitel, T-cash and Airtel MOney.
 - title: Minimal Configuration
   details: This package handles the donkey-work, you just add your config and you should start processing payments
 - title: Real Time

@@ -19,11 +19,6 @@ tools:
         excluded_dirs:
             - vendor
             - tests
-build:
-    tests:
-        override:
-            -
-                command: 'vendor/bin/phpunit --coverage-clover=some-file'
-                coverage:
-                    file: 'some-file'
-                    format: 'clover'
+    external_code_coverage:
+        timeout: 600
+        runs: 3

@@ -1,20 +1,37 @@
 
-### STK PUSH REQUEST
+## STK PUSH REQUEST
 
 Sim Toolkit Request is where you initiate a payment request, the request is then pushed to users phone to validate the transaction by entering their MPESA PIN .
 
-``mpesa_request('07xxxxxxxx',1,'reference','description')``
-> MPESA recently allowed transactions of even KES 1.00
+
+Initiate request
+
+```php 
+$request = mpesa_request('07xxxxxxxx',1,'reference','description');
+```
+You can also imitate a request by sending post request to.
+ 
+*POST*: https://YOU-SITE/payments/callbacks/stk_request
+
+*Parameters*
+ - phone 
+ - amount
+ - reference
+ - description 
+ 
+::: tip
+ MPESA recently allowed transactions of even KES 1.00
+:::
 
 This package emits `Samerior\MobileMoney\Mpesa\Events\StkPushPaymentSuccessEvent` if an STK payment was processed successfully. 
 If an STK request payment is unsuccessful, it emits `Samerior\MobileMoney\Mpesa\Events\StkPushPaymentFailedEvent`. Both events exposes the initial request model to the registered event handlers.
 
-### Listening for Payments
+## Listening for Payments
 A nice and efficient way to tap this events is to register a event listener in your EventServiceProvider
 ````php
 <?php
 
-namespace Dervis\Providers;
+namespace App\Providers;
 
 use Samerior\MobileMoney\Mpesa\Events\C2bConfirmationEvent;
 use Samerior\MobileMoney\Mpesa\Events\StkPushPaymentFailedEvent;
@@ -47,7 +64,7 @@ Here is a sample for `StkPushPaymentSuccessEvent`
 ```php
 <?php
 
-namespace Dervis\Listeners;
+namespace App\Listeners;
 
 use Samerior\MobileMoney\Mpesa\Events\StkPushPaymentSuccessEvent;
 

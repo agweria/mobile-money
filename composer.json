@@ -30,7 +30,7 @@
         "jivesh/laravel-slack": "^2.0"
     },
     "require-dev": {
-        "orchestra/testbench": "~3.0",
+        "orchestra/testbench": "~3.6",
         "squizlabs/php_codesniffer": "3.*"
     },
     "autoload": {

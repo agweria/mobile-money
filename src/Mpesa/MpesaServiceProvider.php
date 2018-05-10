@@ -47,14 +47,14 @@ class MpesaServiceProvider extends ServiceProvider
 
         $this->registerFacades();
         $this->registerEvents();
-        $this->mergeConfigFrom(__DIR__ . '/../../config/dervisgroup.mpesa.php', 'dervisgroup.mpesa');
+        $this->mergeConfigFrom(__DIR__ . '/../../config/samerior.mpesa.php', 'samerior.mpesa');
     }
 
     public function boot()
     {
         $this->loadRoutesFrom(__DIR__ . '/Http/routes.php');
         $this->loadMigrationsFrom(__DIR__ . '/Database/Migrations');
-        $this->publishes([__DIR__ . '/../../config/dervisgroup.mpesa.php' => config_path('dervisgroup.mpesa.php'),]);
+        $this->publishes([__DIR__ . '/../../config/samerior.mpesa.php' => config_path('samerior.mpesa.php'),]);
 
         $this->app['router']->aliasMiddleware('pesa.cors', MobileMoneyCors::class);
     }

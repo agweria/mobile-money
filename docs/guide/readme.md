@@ -18,6 +18,7 @@ Need help integrating?  Mpesa, Equitel, RTGS, SWIFT, VISA, MASTERRCARD? Contact 
 
 ## Testing
 
+Run the following command to test with phpunit
 ``` bash
 $ composer test
 ```
