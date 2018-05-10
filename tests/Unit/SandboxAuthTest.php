@@ -2,7 +2,6 @@
 
 namespace Samerior\MobileMoney\Tests\Unit;
 
-
 use Samerior\MobileMoney\Mpesa\Exceptions\MpesaException;
 use Samerior\MobileMoney\Mpesa\Library\Authenticator;
 use Samerior\MobileMoney\Tests\TestCase;

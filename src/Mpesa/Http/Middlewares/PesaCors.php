@@ -6,7 +6,7 @@ namespace Samerior\MobileMoney\Mpesa\Http\Middlewares;
  * Class MobileMoneyCors
  * @package Samerior\MobileMoney\Http\Middlewares
  */
-class MobileMoneyCors
+class PesaCors
 {
     /**
      * Handle an incoming request.

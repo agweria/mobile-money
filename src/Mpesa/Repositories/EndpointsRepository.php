@@ -20,7 +20,6 @@ class EndpointsRepository
      */
     private static function getEndpoint($section): string
     {
-
         $list = [
             'auth' => 'oauth/v1/generate?grant_type=client_credentials',
             'id_check' => 'mpesa/checkidentity/v1/query',
