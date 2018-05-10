@@ -26,13 +26,20 @@ module.exports = {
                 title: 'Mpesa',
                 collapsable: false,
                 children: [
-                    '/guide/mpesa/',
+                    ['/guide/mpesa/', 'Introduction'],
                     ['/guide/mpesa/register', 'Register URL'],
                     ['/guide/mpesa/stk', 'STK Push'],
                     ['/guide/mpesa/c2b', 'C2B Events'],
                     ['/guide/mpesa/faq', 'FAQ']
                 ]
             },
+            {
+                title: 'Contributing',
+                children: [
+                    ['/developers/contributing', 'Contributing'],
+                    ['/developers/coc', 'Code of Conduct']
+                ]
+            }
         ]
     }
 }
