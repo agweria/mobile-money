@@ -1,0 +1,6 @@
+.couscous
+vendor/
+coverage.clover
+node_modules/
+composer.lock
+yarn.lock

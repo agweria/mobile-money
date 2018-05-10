@@ -1,0 +1,29 @@
+filter:
+    excluded_paths: [tests/*]
+
+checks:
+    php:
+        code_rating: true
+        duplication: true
+tools:
+    php_analyzer: true
+    php_mess_detector: true
+    php_changetracking: true
+    php_code_sniffer:
+        config:
+            standard: PSR2
+    php_loc:
+        excluded_dirs:
+            - vendor
+    php_pdepend:
+        excluded_dirs:
+            - vendor
+            - tests
+build:
+    tests:
+        override:
+            -
+                command: 'vendor/bin/phpunit --coverage-clover=some-file'
+                coverage:
+                    file: 'some-file'
+                    format: 'clover'
