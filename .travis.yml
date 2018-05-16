@@ -2,7 +2,7 @@ language: php
 
 notifications:
   email: false
-  slack: dervisgroup:EqIm58uQMIDcaSc9qyGUg1EK
+  slack: samerior:FnuAd61tv6oF3C8GdrEFRAoo
 
 php:
   - 7.1.3

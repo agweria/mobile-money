@@ -37,6 +37,7 @@ module.exports = {
                     ['/guide/mpesa/faq', 'FAQ']
                 ]
             },
+            ['/LICENSE', 'License'],
             {
                 title: 'Contributing',
                 children: [
