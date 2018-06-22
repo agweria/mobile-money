@@ -37,6 +37,13 @@ module.exports = {
                     ['/guide/mpesa/faq', 'FAQ']
                 ]
             },
+            {
+                title:'Equity',
+                collapsable:true,
+                children:[
+                    ['/guide/equity','Introduction']
+                ]
+            }
             ['/LICENSE', 'License'],
             {
                 title: 'Contributing',
