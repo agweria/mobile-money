@@ -41,9 +41,9 @@ module.exports = {
                 title:'Equity',
                 collapsable:true,
                 children:[
-                    ['/guide/equity','Introduction']
+                    ['/guide/equity/','Introduction']
                 ]
-            }
+            },
             ['/LICENSE', 'License'],
             {
                 title: 'Contributing',
