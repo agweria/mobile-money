@@ -14,6 +14,15 @@ With recent mobile network interoperability, it will be possible to accept payme
 See [this article about mobile money interoperability](https://www.standardmedia.co.ke/business/article/2001276005/operators-to-launch-money-transfer-across-networks)
 :::
 
+## Operator Support
+
+| Platform      | C2B                   | B2C                   | B2B                   | Balance Query         | Reversals             |
+| :------------ |:--------------------: | :----------------:    | :----:                | :-----------:         | :--------:            |
+| Mpesa         | :heavy_check_mark:    | :heavy_check_mark:    | :heavy_check_mark:    | :heavy_check_mark:    | :heavy_check_mark:    |
+| Equitel       | :heavy_check_mark:    | :heavy_check_mark:    | :x:                   | :heavy_check_mark:    | :heavy_check_mark:    |
+| Airtel Money  | :heavy_check_mark:    | :heavy_check_mark:    | :x:                   | :heavy_check_mark:    | :x:                   |
+| T-Cash        | :heavy_check_mark:    | :heavy_check_mark:    | :x:                   | :heavy_check_mark:    | :x:                   |
+
 ## Features
 
 ### All Players
