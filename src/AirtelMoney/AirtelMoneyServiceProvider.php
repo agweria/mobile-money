@@ -2,7 +2,6 @@
 
 namespace Samerior\MobileMoney\AirtelMoney;
 
-
 use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 use Samerior\MobileMoney\AirtelMoney\Library\Cashier;
@@ -22,5 +21,4 @@ class AirtelMoneyServiceProvider extends ServiceProvider
             return $app->make(Cashier::class);
         });
     }
-
 }
