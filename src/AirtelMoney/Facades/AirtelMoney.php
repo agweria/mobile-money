@@ -2,7 +2,6 @@
 
 namespace Samerior\MobileMoney\AirtelMoney\Facades;
 
-
 use Illuminate\Support\Facades\Facade;
 
 /**
