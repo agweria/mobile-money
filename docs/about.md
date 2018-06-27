@@ -7,4 +7,4 @@
 
 Website: [samerior.com](https://www.samerior.com)
 
-Email:   [info@samerior.com](mailto:info@samerior.com)
+Email:   [sam@samerior.com](mailto:sam@samerior.com)

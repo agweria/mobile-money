@@ -13,7 +13,7 @@ First, publish configuration files
 php artisan vendor:publish --provider="Samerior\MobileMoney\Mpesa\MpesaServiceProvider"
 ```
 This will publish the mpesa configuration file into the `config` directory as
-`dervisgroup.mpesa.php`. 
+`samerior.mpesa.php`. 
 This file contains all the configurations required to use the package. 
 
 ::: tip 
@@ -24,4 +24,4 @@ If you intend to use Equity Payments run the command below to publish its config
 php artisan vendor:publish --provider="Samerior\MobileMoney\Equity\EquityServiceProvider"
 ```
 This will publish the mpesa configuration file into the `config` directory as
-`dervisgroup.equity.php`. 
+`samerior.equity.php`. 

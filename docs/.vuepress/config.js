@@ -1,6 +1,6 @@
 module.exports = {
     title: 'Mobile Money API',
-    description: "Mobile Money Payments API in Kenya (MPESA, EQUITEL, Airtel Money,T-CASH). Supports B2B, B2C and C2B ",
+    description: "Mobile Money Payments API in Kenya (MPESA, EQUITEL, Airtel Money,T-CASH). B2B, B2C, C2B, Balance Query and Reversals ",
     home: true,
     serviceWorker: true,
     head: [
@@ -34,7 +34,15 @@ module.exports = {
                     ['/guide/mpesa/register', 'Register URL'],
                     ['/guide/mpesa/stk', 'STK Push'],
                     ['/guide/mpesa/c2b', 'C2B Events'],
-                    ['/guide/mpesa/faq', 'FAQ']
+                    ['/guide/mpesa/faq', 'FAQ'],
+                    ['/guide/mpesa/errors', 'Errors']
+                ]
+            },
+            {
+                title:'Equity',
+                collapsable:true,
+                children:[
+                    ['/guide/equity/','Introduction']
                 ]
             },
             ['/LICENSE', 'License'],
