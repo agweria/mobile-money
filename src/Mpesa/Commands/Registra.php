@@ -4,7 +4,7 @@ namespace Samerior\MobileMoney\Mpesa\Commands;
 
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Console\Command;
-use Samerior\MobileMoney\Mpesa\Library\RegisterUrl;
+use Samerior\MobileMoney\Mpesa\Library\C2B\RegisterUrl;
 
 /**
  * Class Registra

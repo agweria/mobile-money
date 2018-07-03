@@ -1,8 +1,9 @@
 <?php
 
-namespace Samerior\MobileMoney\Mpesa\Library;
+namespace Samerior\MobileMoney\Mpesa\Library\C2B;
 
 use Samerior\MobileMoney\Mpesa\Exceptions\MpesaException;
+use Samerior\MobileMoney\Mpesa\Library\Core\ApiCore;
 
 /**
  * Class RegisterUrl
@@ -37,41 +38,44 @@ class RegisterUrl extends ApiCore
 
     /**
      * @param $shortCode
-     * @return $this
+     * @return RegisterUrl
      */
-    public function register($shortCode)
+    public function register($shortCode): RegisterUrl
     {
         $this->shortCode = $shortCode;
         return $this;
     }
 
     /**
+     * Set the validation URL
      * @param string $validationURL
-     * @return $this
+     * @return RegisterUrl
      */
-    public function onValidation($validationURL)
+    public function onValidation($validationURL): RegisterUrl
     {
         $this->validationURL = $validationURL;
         return $this;
     }
 
     /**
+     * Set the confirmation URL
      * @param $confirmationURL
-     * @return $this
+     * @return RegisterUrl
      */
-    public function onConfirmation($confirmationURL)
+    public function onConfirmation($confirmationURL): RegisterUrl
     {
         $this->confirmationURL = $confirmationURL;
         return $this;
     }
 
     /**
+     * Set the timeout URL
      * @param string $onTimeout
-     * @return $this
+     * @return RegisterUrl
      * @throws \Exception
      * @throws MpesaException
      */
-    public function onTimeout($onTimeout = 'Completed')
+    public function onTimeout($onTimeout = 'Completed'): RegisterUrl
     {
         if ($onTimeout !== 'Completed' && $onTimeout !== 'Cancelled') {
             throw new MpesaException('Invalid timeout argument. Use Completed or Cancelled');
@@ -81,25 +85,19 @@ class RegisterUrl extends ApiCore
     }
 
     /**
-     * @param string|null $shortCode
-     * @param string|null $confirmationURL
-     * @param string|null $validationURL
-     * @param string|null $onTimeout
+     * Send RegisterURL request to mpesa
      * @return mixed
      * @throws MpesaException
      * @throws \Exception
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function submit($shortCode = null, $confirmationURL = null, $validationURL = null, $onTimeout = null)
+    public function submit()
     {
-        if ($onTimeout && $onTimeout !== 'Completed' && $onTimeout = 'Cancelled') {
-            throw new MpesaException('Invalid timeout argument. Use Completed or Cancelled');
-        }
         $body = [
-            'ShortCode' => $shortCode ?: $this->shortCode,
-            'ResponseType' => $onTimeout ?: $this->onTimeout,
-            'ConfirmationURL' => $confirmationURL ?: $this->confirmationURL,
-            'ValidationURL' => $validationURL ?: $this->validationURL
+            'ShortCode' => $this->shortCode,
+            'ResponseType' => $this->onTimeout,
+            'ConfirmationURL' => $this->confirmationURL,
+            'ValidationURL' => $this->validationURL
         ];
         return $this->sendRequest($body, 'register');
     }

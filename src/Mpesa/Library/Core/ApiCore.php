@@ -17,35 +17,32 @@ class ApiCore
     /**
      * @var Bootstrap
      */
-    private $engine;
-    /**
-     * @var bool
-     */
-    public $bulk = false;
-    /**
-     * @var Mpesa
-     */
-    public $mpesaRepository;
+    protected $engine;
 
     /**
      * ApiCore constructor.
      * @param Bootstrap $engine
-     * @param Mpesa $mpesa
      */
-    public function __construct(Bootstrap $engine, Mpesa $mpesa)
+    public function __construct(Bootstrap $engine)
     {
         $this->engine = $engine;
-        $this->mpesaRepository = $mpesa;
     }
 
     /**
+     * Attempt to format the phone number to begin with 2547xxxxxxxxx
      * @param string $number
      * @param bool $strip_plus
      * @return string
+     * @throws \Throwable
      */
     protected function formatPhoneNumber($number, $strip_plus = true): string
     {
         $number = preg_replace('/\s+/', '', $number);
+        /**
+         * Closure to replace the first occurrence, [if it exists?] with a new set of string
+         * @param $needle
+         * @param $replacement
+         */
         $replace = function ($needle, $replacement) use (&$number) {
             if (starts_with($number, $needle)) {
                 $pos = strpos($number, $needle);
@@ -55,9 +52,11 @@ class ApiCore
         };
         $replace('2547', '+2547');
         $replace('07', '+2547');
+        $replace('7', '+2547');
         if ($strip_plus) {
             $replace('+254', '254');
         }
+        throw_unless(\strlen($number) === 12, MpesaException::class, 'Invalid Phone number');
         return $number;
     }
 

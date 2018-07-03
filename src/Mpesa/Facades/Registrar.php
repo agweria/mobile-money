@@ -2,19 +2,17 @@
 
 namespace Samerior\MobileMoney\Mpesa\Facades;
 
-use Illuminate\Support\Facades\Facade;
-
 /**
  * Class Registrar
  * @package Samerior\MobileMoney\Mpesa\Facades
  */
-class Registrar extends Facade
+class Registrar extends BaseFacade
 {
     /**
      * @return string
      */
     protected static function getFacadeAccessor()
     {
-        return 'mpesa_registrar';
+        return self::$short_name . 'registrar';
     }
 }

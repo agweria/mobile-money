@@ -56,7 +56,11 @@ if (!function_exists('mpesa_request')) {
      */
     function mpesa_request($phone, $amount, $reference = null, $description = null)
     {
-        return STK::push($amount, $phone, $reference, $description);
+        return STK::requestAmount($amount)
+            ->fromNumber($phone)
+            ->toAccount($reference)
+            ->usingDescription($description)
+            ->push();
     }
 }
 if (!function_exists('mpesa_validate')) {

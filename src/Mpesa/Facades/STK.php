@@ -2,16 +2,14 @@
 
 namespace Samerior\MobileMoney\Mpesa\Facades;
 
-use Illuminate\Support\Facades\Facade;
-
 /**
  * Class STK
  * @package Samerior\MobileMoney\Mpesa\Facades
  */
-class STK extends Facade
+class STK extends BaseFacade
 {
     protected static function getFacadeAccessor()
     {
-        return 'mpesa_stk';
+        return self::$short_name . 'stk';
     }
 }

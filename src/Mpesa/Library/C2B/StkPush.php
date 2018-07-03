@@ -1,11 +1,12 @@
 <?php
 
-namespace Samerior\MobileMoney\Mpesa\Library;
+namespace Samerior\MobileMoney\Mpesa\Library\C2B;
 
 use Carbon\Carbon;
 use Samerior\MobileMoney\Mpesa\Database\Entities\MpesaStkRequest;
 use Samerior\MobileMoney\Mpesa\Events\StkPushRequestedEvent;
 use Samerior\MobileMoney\Mpesa\Exceptions\MpesaException;
+use Samerior\MobileMoney\Mpesa\Library\Core\ApiCore;
 use Samerior\MobileMoney\Mpesa\Repositories\Generator;
 use GuzzleHttp\Exception\RequestException;
 use Illuminate\Support\Facades\Auth;
@@ -27,92 +28,102 @@ class StkPush extends ApiCore
     /**
      * @var string
      */
-    protected $reference;
+    protected $account_reference;
     /**
      * @var string
      */
     protected $description;
 
     /**
+     * Set the amount you are requesting the user to pay
      * @param string $amount
      * @return $this
-     * @throws \Exception
-     * @throws MpesaException
+     * @throws \Throwable
      */
-    public function request($amount): self
+    public function requestAmount($amount): self
     {
-        if (!\is_numeric($amount)) {
-            throw new MpesaException('The amount must be numeric, got ' . $amount);
-        }
-        $this->amount = $amount;
+        throw_unless(is_numeric($amount), MpesaException::class, 'The amount must be numeric. Got ' . $amount);
+        throw_if($amount > 70000, MpesaException::class, 'The maximum allowed amount for this API is Ksh 70,000. Got ' . $amount);
+        $this->amount = (int)$amount;
         return $this;
     }
 
     /**
+     * Set the [customer] number which will make the transactions
      * @param string $number
      * @return $this
+     * @throws \Throwable
      */
-    public function from($number): self
+    public function fromNumber($number): self
     {
         $this->number = $this->formatPhoneNumber($number);
         return $this;
     }
 
     /**
-     * Set the mpesa reference
+     * Set the mpesa account reference
      *
-     * @param  string $reference
-     * @param  string $description
-     * @return $this
-     * @throws \Exception
-     * @throws MpesaException
+     * @param  string $account
+     * @return StkPush
+     * @throws \Throwable
      */
-    public function usingReference($reference, $description): self
+    public function toAccount($account = null): StkPush
     {
-        \preg_match('/[^A-Za-z0-9]/', $reference, $matches);
-        if (\count($matches)) {
-            throw new MpesaException('Reference should be alphanumeric.');
+        if (empty($account)) {
+            $account = $this->number; // just in case you didn't supply this
         }
-        $this->reference = $reference;
+        $this->account_reference = $account;
+        return $this;
+    }
+
+    /**
+     * Set the transaction description
+     * @param string|null $description
+     * @return StkPush
+     */
+    public function usingDescription($description = null): StkPush
+    {
         $this->description = $description;
         return $this;
     }
 
     /**
      * Send a payment request
-     *
-     * @param  null|int $amount
-     * @param  null|string $number
-     * @param  null|string $reference
-     * @param  null|string $description
      * @return mixed
      * @throws \Samerior\MobileMoney\Mpesa\Exceptions\MpesaException
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws \Exception
      */
-    public function push($amount = null, $number = null, $reference = null, $description = null)
+    public function push()
     {
         $time = Carbon::now()->format('YmdHis');
+        dd($this->engine->config->get('c2b'));
         $shortCode = \config('samerior.mpesa.c2b.short_code');
         $passkey = \config('samerior.mpesa.c2b.passkey');
         $callback = \config('samerior.mpesa.c2b.stk_callback');
         $password = \base64_encode($shortCode . $passkey . $time);
-        $good_phone = $this->formatPhoneNumber($number ?: $this->number);
         $body = [
             'BusinessShortCode' => $shortCode,
             'Password' => $password,
             'Timestamp' => $time,
             'TransactionType' => 'CustomerPayBillOnline',
-            'Amount' => $amount ?: $this->amount,
-            'PartyA' => $good_phone,
+            'Amount' => $this->amount,
+            'PartyA' => $this->number,
             'PartyB' => $shortCode,
-            'PhoneNumber' => $good_phone,
+            'PhoneNumber' => $this->number,
             'CallBackURL' => $callback,
-            'AccountReference' => $reference ?? $this->reference ?? $good_phone,
-            'TransactionDesc' => $description ?? $this->description ?? Generator::generateTransactionNumber(),
+            'AccountReference' => $this->account_reference ?? $this->number,
+            'TransactionDesc' => $this->description ?? Generator::generateTransactionNumber(),
         ];
         $response = $this->sendRequest($body, 'stk_push');
         return $this->saveStkRequest($body, (array)$response);
+    }
+
+
+    private function _validate()
+    {
+        $needed = ['amount', 'number',];
+
     }
 
     /**

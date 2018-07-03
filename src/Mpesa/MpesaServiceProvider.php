@@ -2,6 +2,8 @@
 
 namespace Samerior\MobileMoney\Mpesa;
 
+use Illuminate\Support\Facades\Event;
+use Illuminate\Support\ServiceProvider;
 use Samerior\MobileMoney\Mpesa\Commands\Registra;
 use Samerior\MobileMoney\Mpesa\Commands\StkStatus;
 use Samerior\MobileMoney\Mpesa\Events\C2bConfirmationEvent;
@@ -9,16 +11,12 @@ use Samerior\MobileMoney\Mpesa\Events\StkPushPaymentFailedEvent;
 use Samerior\MobileMoney\Mpesa\Events\StkPushPaymentSuccessEvent;
 use Samerior\MobileMoney\Mpesa\Http\Middlewares\MobileMoneyCors;
 use Samerior\MobileMoney\Mpesa\Library\BulkSender;
-use Samerior\MobileMoney\Mpesa\Library\Core;
+use Samerior\MobileMoney\Mpesa\Library\C2B\RegisterUrl;
+use Samerior\MobileMoney\Mpesa\Library\C2B\StkPush;
 use Samerior\MobileMoney\Mpesa\Library\IdCheck;
-use Samerior\MobileMoney\Mpesa\Library\RegisterUrl;
-use Samerior\MobileMoney\Mpesa\Library\StkPush;
 use Samerior\MobileMoney\Mpesa\Listeners\C2bPaymentConfirmation;
 use Samerior\MobileMoney\Mpesa\Listeners\StkPaymentFailed;
 use Samerior\MobileMoney\Mpesa\Listeners\StkPaymentSuccessful;
-use GuzzleHttp\Client;
-use Illuminate\Support\Facades\Event;
-use Illuminate\Support\ServiceProvider;
 
 /**
  * Class MpesaServiceProvider
@@ -27,6 +25,11 @@ use Illuminate\Support\ServiceProvider;
 class MpesaServiceProvider extends ServiceProvider
 {
     /**
+     * @var string
+     */
+    private $short_name = 'samerior.mobile-money.mpesa.';
+
+    /**
      * Register the service provider.
      *
      * @return void
@@ -34,10 +37,9 @@ class MpesaServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(Core\Bootstrap::class, function ($app) {
-            dd($app);
-            return $core;
-        });
+//        $this->app->bind(Bootstrap::class, function ($app) {
+//            return $app->make(Bootstrap::class);
+//        });
         $this->commands(
             [
                 Registra::class,
@@ -64,23 +66,24 @@ class MpesaServiceProvider extends ServiceProvider
      */
     private function registerFacades()
     {
+
         $this->app->bind(
-            'mpesa_stk', function () {
+            $this->short_name . 'stk', function () {
             return $this->app->make(StkPush::class);
         }
         );
         $this->app->bind(
-            'mpesa_registrar', function () {
+            $this->short_name . 'registrar', function () {
             return $this->app->make(RegisterUrl::class);
         }
         );
         $this->app->bind(
-            'mpesa_identity', function () {
+            $this->short_name . 'identity', function () {
             return $this->app->make(IdCheck::class);
         }
         );
         $this->app->bind(
-            'mpesa_b2c', function () {
+            $this->short_name . 'b2c', function () {
             return $this->app->make(BulkSender::class);
         }
         );

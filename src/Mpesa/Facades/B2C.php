@@ -2,19 +2,17 @@
 
 namespace Samerior\MobileMoney\Mpesa\Facades;
 
-use Illuminate\Support\Facades\Facade;
-
 /**
  * Class B2C
  * @package Samerior\MobileMoney\Mpesa\Facades
  */
-class B2C extends Facade
+class B2C extends BaseFacade
 {
     /**
      * @return string
      */
     protected static function getFacadeAccessor()
     {
-        return 'mpesa_b2c';
+        return self::$short_name . 'b2c';
     }
 }
