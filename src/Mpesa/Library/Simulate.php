@@ -4,6 +4,7 @@ namespace Samerior\MobileMoney\Mpesa\Library;
 
 use Samerior\MobileMoney\Mpesa\Exceptions\MpesaException;
 use GuzzleHttp\Exception\ClientException;
+use Samerior\MobileMoney\Mpesa\Library\Core\ApiCore;
 
 /**
  * Class Simulate

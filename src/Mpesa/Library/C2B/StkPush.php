@@ -97,7 +97,6 @@ class StkPush extends ApiCore
     public function push()
     {
         $time = Carbon::now()->format('YmdHis');
-        dd($this->engine->config->get('c2b'));
         $shortCode = \config('samerior.mpesa.c2b.short_code');
         $passkey = \config('samerior.mpesa.c2b.passkey');
         $callback = \config('samerior.mpesa.c2b.stk_callback');

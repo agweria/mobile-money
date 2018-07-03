@@ -10,13 +10,14 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property int $id
  * @property string $name
- * @property string $shortcode
+ * @property string $short_code
  * @property string $environment
  * @property string $consumer_key
  * @property string $consumer_secret
  * @property string|null $initiator_name
  * @property string|null $initiator_credentials
  * @property string $type
+ * @property int $default
  * @property \Carbon\Carbon|null $created_at
  * @property \Carbon\Carbon|null $updated_at
  * @mixin \Eloquent
