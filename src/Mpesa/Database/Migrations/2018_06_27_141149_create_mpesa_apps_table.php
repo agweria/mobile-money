@@ -16,13 +16,14 @@ class CreateMpesaAppsTable extends Migration
         Schema::create('mpesa_apps', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('shortcode');
+            $table->string('short_code');
             $table->enum('environment', ['sandbox', 'production'])->default('sandbox');
             $table->string('consumer_key');
             $table->string('consumer_secret');
             $table->string('initiator_name')->nullable();
             $table->string('initiator_credentials')->nullable();
             $table->string('type')->default('c2b');
+            $table->boolean('default')->default(false);
             $table->timestamps();
         });
     }

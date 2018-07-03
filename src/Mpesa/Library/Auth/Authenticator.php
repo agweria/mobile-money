@@ -1,11 +1,12 @@
 <?php
 
-namespace Samerior\MobileMoney\Mpesa\Library;
+namespace Samerior\MobileMoney\Mpesa\Library\Auth;
 
 use Samerior\MobileMoney\Mpesa\Exceptions\MpesaException;
 use GuzzleHttp\Exception\RequestException;
 use Illuminate\Support\Facades\Cache;
 use Psr\Http\Message\ResponseInterface;
+use Samerior\MobileMoney\Mpesa\Library\Core\Bootstrap;
 use Samerior\MobileMoney\Mpesa\Repositories\EndpointsRepository;
 
 /**
@@ -21,7 +22,7 @@ class Authenticator
      */
     protected $endpoint;
     /**
-     * @var Core
+     * @var Bootstrap
      */
     protected $engine;
     /**
@@ -29,21 +30,16 @@ class Authenticator
      */
     protected static $instance;
     /**
-     * @var bool
-     */
-    public $alt = false;
-    /**
      * @var string
      */
     private $credentials;
 
     /**
      * Authenticator constructor.
-     *
-     * @param  Core $core
+     * @param Bootstrap $core
      * @throws MpesaException
      */
-    public function __construct(Core $core)
+    public function __construct(Bootstrap $core)
     {
         $this->engine = $core;
         $this->endpoint = EndpointsRepository::build('auth');
@@ -51,16 +47,12 @@ class Authenticator
     }
 
     /**
-     * @param bool $bulk
      * @return string
      * @throws MpesaException
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function authenticate($bulk = false): ?string
+    public function authenticate(): ?string
     {
-        if ($bulk) {
-            $this->alt = true;
-        }
         $this->generateCredentials();
         if (config('samerior.mpesa.cache_credentials', false) && !empty($key = $this->getFromCache())) {
             return $key;

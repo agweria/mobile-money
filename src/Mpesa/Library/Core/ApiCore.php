@@ -1,6 +1,6 @@
 <?php
 
-namespace Samerior\MobileMoney\Mpesa\Library;
+namespace Samerior\MobileMoney\Mpesa\Library\Core;
 
 use Samerior\MobileMoney\Mpesa\Exceptions\MpesaException;
 use Samerior\MobileMoney\Mpesa\Repositories\EndpointsRepository;
@@ -15,7 +15,7 @@ use GuzzleHttp\Exception\ClientException;
 class ApiCore
 {
     /**
-     * @var Core
+     * @var Bootstrap
      */
     private $engine;
     /**
@@ -29,11 +29,10 @@ class ApiCore
 
     /**
      * ApiCore constructor.
-     *
-     * @param Core $engine
+     * @param Bootstrap $engine
      * @param Mpesa $mpesa
      */
-    public function __construct(Core $engine, Mpesa $mpesa)
+    public function __construct(Bootstrap $engine, Mpesa $mpesa)
     {
         $this->engine = $engine;
         $this->mpesaRepository = $mpesa;
@@ -66,8 +65,6 @@ class ApiCore
      * @param array $body
      * @param string $endpoint
      * @return \Psr\Http\Message\ResponseInterface
-     * @throws \Samerior\MobileMoney\Mpesa\Exceptions\MpesaException
-     * @throws \Exception
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     private function makeRequest($body, $endpoint)

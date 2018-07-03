@@ -74,8 +74,8 @@ if (!function_exists('mpesa_simulate')) {
      * @param int $phone
      * @param string $amount
      * @return mixed
-     * @throws \Samerior\MobileMoney\Exceptions\MpesaException
      * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Samerior\MobileMoney\Mpesa\Exceptions\MpesaException
      */
     function mpesa_simulate($phone, $amount)
     {
