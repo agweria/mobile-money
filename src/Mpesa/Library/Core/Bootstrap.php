@@ -2,8 +2,6 @@
 
 namespace Samerior\MobileMoney\Mpesa\Library\Core;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\ClientInterface;
 use Samerior\MobileMoney\Mpesa\Library\Auth\Authenticator;
 use Samerior\MobileMoney\Mpesa\Repositories\Mpesa;
 use Samerior\MobileMoney\Mpesa\Repositories\MpesaCache;
@@ -16,9 +14,9 @@ use Samerior\MobileMoney\Mpesa\Repositories\MpesaConfig;
 class Bootstrap
 {
     /**
-     * @var ClientInterface
+     * @var Http
      */
-    public $http_client;
+    public $http;
     /**
      * @var Authenticator
      */
@@ -41,11 +39,12 @@ class Bootstrap
      * @param MpesaConfig $mpesaConfig
      * @param MpesaCache $mpesaCache
      * @param Mpesa $mpesa
+     * @param Http $http
      * @throws \Samerior\MobileMoney\Mpesa\Exceptions\MpesaException
      */
-    public function __construct(MpesaConfig $mpesaConfig, MpesaCache $mpesaCache, Mpesa $mpesa)
+    public function __construct(MpesaConfig $mpesaConfig, MpesaCache $mpesaCache, Mpesa $mpesa, Http $http)
     {
-        $this->http_client = new Client(['http_errors' => false,]);
+        $this->http = $http;
         $this->config = $mpesaConfig;
         $this->cache = $mpesaCache;
         $this->mpesaRepository = $mpesa;

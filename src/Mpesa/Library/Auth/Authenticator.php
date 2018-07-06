@@ -2,19 +2,17 @@
 
 namespace Samerior\MobileMoney\Mpesa\Library\Auth;
 
-use Samerior\MobileMoney\Mpesa\Exceptions\MpesaException;
 use GuzzleHttp\Exception\RequestException;
-use Illuminate\Support\Facades\Cache;
-use Psr\Http\Message\ResponseInterface;
+use Samerior\MobileMoney\Mpesa\Exceptions\MpesaException;
 use Samerior\MobileMoney\Mpesa\Library\Core\Bootstrap;
-use Samerior\MobileMoney\Mpesa\Repositories\EndpointsRepository;
+use Throwable;
 
 /**
  * Class Authenticator
  *
  * @package Samerior\MobileMoney\Mpesa\Library
  */
-class Authenticator
+class  Authenticator
 {
 
     /**
@@ -24,117 +22,76 @@ class Authenticator
     /**
      * @var Bootstrap
      */
-    protected $engine;
+    protected $core;
     /**
      * @var Authenticator
      */
     protected static $instance;
-    /**
-     * @var string
-     */
-    private $credentials;
 
     /**
      * Authenticator constructor.
      * @param Bootstrap $core
-     * @throws MpesaException
      */
     public function __construct(Bootstrap $core)
     {
-        $this->engine = $core;
-        $this->endpoint = EndpointsRepository::build('auth');
-        self::$instance = $this;
+        $this->core = $core;
     }
 
     /**
+     * Acquire authentication
      * @return string
      * @throws MpesaException
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws Throwable
      */
     public function authenticate(): ?string
     {
-        $this->generateCredentials();
-        if (config('samerior.mpesa.cache_credentials', false) && !empty($key = $this->getFromCache())) {
+        $credentials = $this->generateCredentials();
+        if ($this->core->config->get('cache_credentials', false) && !empty($key = $this->getFromCache($credentials))) {
             return $key;
         }
         try {
-            $response = $this->makeRequest();
-            if ($response->getStatusCode() === 200) {
-                $body = \json_decode($response->getBody());
-                $this->saveCredentials($body);
-                return $body->access_token;
-            }
-            throw new MpesaException($response->getReasonPhrase());
+            $response = $this->core->http->authRequest($credentials);
+            throw_unless($response->getStatusCode() === 200, MpesaException::class, $response->getReasonPhrase());
+            $body = \json_decode($response->getBody());
+            $this->saveCredentials($body);
+            return $body->access_token;
         } catch (RequestException $exception) {
             $message = $exception->getResponse() ?
                 $exception->getResponse()->getReasonPhrase() :
                 $exception->getMessage();
-
-            throw $this->generateException($message);
+            throw  new  MpesaException($message);
         }
     }
 
     /**
-     * @param $reason
-     * @return MpesaException
+     * Generate base64 encoded consumer key and secret for obtaining bearer
+     * @return string
      */
-    private function generateException($reason): ?MpesaException
+    private function generateCredentials(): string
     {
-        switch (\strtolower($reason)) {
-            case 'bad request: invalid credentials':
-                return new MpesaException('Invalid consumer key and secret combination');
-            default:
-                return new MpesaException($reason);
-        }
+        $key = $this->core->config->get('c2b.consumer_key');
+        $secret = $this->core->config->get('c2b.consumer_secret');
+        return \base64_encode($key . ':' . $secret);
     }
-
     /**
-     * @return $this
+     * Retrieve this app's credentials from our cache store
+     * @param string|null $credentials
+     * @return string|null
      */
-    private function generateCredentials(): self
+    private function getFromCache($credentials): ?string
     {
-        $key = \config('samerior.mpesa.c2b.consumer_key');
-        $secret = \config('samerior.mpesa.c2b.consumer_secret');
-        if ($this->alt) {
-            //lazy way to switch to a different app in case of bulk
-            $key = \config('samerior.mpesa.bulk.consumer_key');
-            $secret = \config('samerior.mpesa.bulk.consumer_secret');
-        }
-        $this->credentials = \base64_encode($key . ':' . $secret);
-        return $this;
-    }
-
-    /**
-     * @return ResponseInterface
-     * @throws \GuzzleHttp\Exception\GuzzleException
-     */
-    private function makeRequest(): ResponseInterface
-    {
-        return $this->engine->client->request(
-            'GET', $this->endpoint, [
-                'headers' => [
-                    'Authorization' => 'Basic ' . $this->credentials,
-                    'Content-Type' => 'application/json',
-                ],
-            ]
-        );
-    }
-
-    /**
-     * @return mixed
-     */
-    private function getFromCache()
-    {
-        return Cache::get($this->credentials);
+        return $this->core->cache->get($credentials);
     }
 
     /**
      * Store the credentials in the cache.
      *
      * @param $credentials
+     * @return null|string
      */
-    private function saveCredentials($credentials)
+    private function saveCredentials($credentials): ?string
     {
-        Cache::put($this->credentials, $credentials->access_token, 30);
+        $this->core->cache->put($credentials, $credentials->access_token, 30);
+        return $this->getFromCache($credentials);
     }
 }

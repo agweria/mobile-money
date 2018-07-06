@@ -17,7 +17,7 @@ class ApiCore
     /**
      * @var Bootstrap
      */
-    protected $engine;
+    protected $core;
 
     /**
      * ApiCore constructor.
@@ -25,7 +25,7 @@ class ApiCore
      */
     public function __construct(Bootstrap $engine)
     {
-        $this->engine = $engine;
+        $this->core = $engine;
     }
 
     /**
@@ -73,7 +73,7 @@ class ApiCore
             $endpoint,
             [
                 'headers' => [
-                    'Authorization' => 'Bearer ' . $this->engine->auth->authenticate($this->bulk),
+                    'Authorization' => 'Bearer ' . $this->engine->auth->authenticate(),
                     'Content-Type' => 'application/json',
                 ],
                 'json' => $body,
@@ -91,6 +91,8 @@ class ApiCore
     public function sendRequest($body, $endpoint)
     {
         $endpoint = EndpointsRepository::build($endpoint);
+        return $this->core->http->makeRequest($body, $endpoint);
+        dd(get_defined_vars());
         try {
             $response = $this->makeRequest($body, $endpoint);
             $_body = \json_decode($response->getBody());

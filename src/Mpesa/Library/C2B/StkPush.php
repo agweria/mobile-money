@@ -37,10 +37,10 @@ class StkPush extends ApiCore
     /**
      * Set the amount you are requesting the user to pay
      * @param string $amount
-     * @return $this
+     * @return StkPush
      * @throws \Throwable
      */
-    public function requestAmount($amount): self
+    public function requestAmount($amount): StkPush
     {
         throw_unless(is_numeric($amount), MpesaException::class, 'The amount must be numeric. Got ' . $amount);
         throw_if($amount > 70000, MpesaException::class, 'The maximum allowed amount for this API is Ksh 70,000. Got ' . $amount);
@@ -51,10 +51,10 @@ class StkPush extends ApiCore
     /**
      * Set the [customer] number which will make the transactions
      * @param string $number
-     * @return $this
+     * @return StkPush
      * @throws \Throwable
      */
-    public function fromNumber($number): self
+    public function fromNumber($number): StkPush
     {
         $this->number = $this->formatPhoneNumber($number);
         return $this;
@@ -97,9 +97,9 @@ class StkPush extends ApiCore
     public function push()
     {
         $time = Carbon::now()->format('YmdHis');
-        $shortCode = \config('samerior.mpesa.c2b.short_code');
-        $passkey = \config('samerior.mpesa.c2b.passkey');
-        $callback = \config('samerior.mpesa.c2b.stk_callback');
+        $shortCode =$this->core->config->get('c2b.short_code');
+        $passkey =$this->core->config->get('c2b.passkey');
+        $callback =$this->core->config->get('c2b.stk_callback');
         $password = \base64_encode($shortCode . $passkey . $time);
         $body = [
             'BusinessShortCode' => $shortCode,
@@ -167,8 +167,8 @@ class StkPush extends ApiCore
             $checkoutRequestID = MpesaStkRequest::find($checkoutRequestID)->CheckoutRequestID;
         }
         $time = Carbon::now()->format('YmdHis');
-        $shortCode = \config('samerior.mpesa.c2b.short_code');
-        $passkey = \config('samerior.mpesa.c2b.passkey');
+        $shortCode =$this->core->config->get('c2b.short_code');
+        $passkey =$this->core->config->get('c2b.passkey');
         $password = \base64_encode($shortCode . $passkey . $time);
         $body = [
             'BusinessShortCode' => $shortCode,
