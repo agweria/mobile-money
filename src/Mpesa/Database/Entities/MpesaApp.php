@@ -2,7 +2,6 @@
 
 namespace Samerior\MobileMoney\Mpesa\Database\Entities;
 
-
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -24,5 +23,4 @@ use Illuminate\Database\Eloquent\Model;
  */
 class MpesaApp extends Model
 {
-
 }

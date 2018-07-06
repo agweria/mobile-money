@@ -122,7 +122,6 @@ class StkPush extends ApiCore
     private function _validate()
     {
         $needed = ['amount', 'number',];
-
     }
 
     /**

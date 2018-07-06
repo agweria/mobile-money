@@ -4,7 +4,6 @@ namespace Samerior\MobileMoney\Mpesa\Repositories;
 
 use Illuminate\Config\Repository;
 
-
 /**
  * Class MpesaConfig
  * @package Samerior\MobileMoney\Mpesa\Repositories
