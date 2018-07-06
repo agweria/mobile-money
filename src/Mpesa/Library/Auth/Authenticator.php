@@ -12,7 +12,7 @@ use Throwable;
  *
  * @package Samerior\MobileMoney\Mpesa\Library
  */
-class  Authenticator
+class Authenticator
 {
 
     /**

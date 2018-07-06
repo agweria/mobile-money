@@ -1,7 +1,6 @@
 <?php
 namespace Samerior\MobileMoney\Mpesa\Facades;
 
-
 use Illuminate\Support\Facades\Facade;
 
 /**
