@@ -5,6 +5,7 @@ notifications:
   slack: samerior:FnuAd61tv6oF3C8GdrEFRAoo
 
 php:
+  - 7.0
   - 7.1.3
   - 7.2
   - nightly
