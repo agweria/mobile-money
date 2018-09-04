@@ -1,5 +1,9 @@
 <?php
-
+Route::group([
+    'prefix' => 'payments/admin',
+    'namespace' => 'Samerior\MobileMoney\Mpesa\Http\Controllers'], function () {
+    Route::get('apps', 'AdminController@apps');
+});
 Route::group([
     'prefix' => 'payments/callbacks',
     'middleware' => 'pesa.cors',

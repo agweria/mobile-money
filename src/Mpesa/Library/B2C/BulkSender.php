@@ -4,6 +4,7 @@ namespace Samerior\MobileMoney\Mpesa\Library;
 
 use Samerior\MobileMoney\Mpesa\Exceptions\MpesaException;
 use GuzzleHttp\Exception\ServerException;
+use Samerior\MobileMoney\Mpesa\Library\Core\ApiCore;
 
 /**
  * Class BulkSender

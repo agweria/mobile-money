@@ -3,6 +3,7 @@
 namespace Samerior\MobileMoney\Mpesa\Library;
 
 use Carbon\Carbon;
+use Samerior\MobileMoney\Mpesa\Library\Core\ApiCore;
 
 /**
  * Class IdCheck

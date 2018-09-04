@@ -20,6 +20,7 @@ class CreateMpesaAppsTable extends Migration
             $table->enum('environment', ['sandbox', 'production'])->default('sandbox');
             $table->string('consumer_key');
             $table->string('consumer_secret');
+            $table->string('passkey')->nullable();
             $table->string('initiator_name')->nullable();
             $table->string('initiator_credentials')->nullable();
             $table->string('type')->default('c2b');

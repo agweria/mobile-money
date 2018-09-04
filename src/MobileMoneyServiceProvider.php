@@ -22,6 +22,7 @@ class MobileMoneyServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->requireHelperScripts();
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'payments');
     }
 
     private function requireHelperScripts()

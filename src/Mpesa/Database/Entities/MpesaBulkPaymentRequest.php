@@ -18,6 +18,16 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Carbon\Carbon|null $created_at
  * @property \Carbon\Carbon|null $updated_at
  * @property-read \Samerior\MobileMoney\Mpesa\Database\Entities\MpesaBulkPaymentResponse $response
+ * @method static \Illuminate\Database\Eloquent\Builder|\Samerior\MobileMoney\Mpesa\Database\Entities\MpesaBulkPaymentRequest whereAmount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Samerior\MobileMoney\Mpesa\Database\Entities\MpesaBulkPaymentRequest whereCommandID($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Samerior\MobileMoney\Mpesa\Database\Entities\MpesaBulkPaymentRequest whereConversationId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Samerior\MobileMoney\Mpesa\Database\Entities\MpesaBulkPaymentRequest whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Samerior\MobileMoney\Mpesa\Database\Entities\MpesaBulkPaymentRequest whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Samerior\MobileMoney\Mpesa\Database\Entities\MpesaBulkPaymentRequest whereOriginatorConversationId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Samerior\MobileMoney\Mpesa\Database\Entities\MpesaBulkPaymentRequest wherePhone($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Samerior\MobileMoney\Mpesa\Database\Entities\MpesaBulkPaymentRequest whereRemarks($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Samerior\MobileMoney\Mpesa\Database\Entities\MpesaBulkPaymentRequest whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Samerior\MobileMoney\Mpesa\Database\Entities\MpesaBulkPaymentRequest whereUserId($value)
  * @mixin \Eloquent
  */
 class MpesaBulkPaymentRequest extends Model
