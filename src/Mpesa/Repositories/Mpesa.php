@@ -53,7 +53,7 @@ class Mpesa
      * @param array $body
      * @return MpesaBulkPaymentRequest|\Illuminate\Database\Eloquent\Model
      */
-    public function saveB2cRequest($response, $body = [])
+    public function saveB2cRequest($response, array $body = [])
     {
         return MpesaBulkPaymentRequest::create([
             'conversation_id' => $response->ConversationID,

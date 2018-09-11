@@ -9,7 +9,7 @@ use Samerior\MobileMoney\Mpesa\Repositories\MpesaConfig;
 
 /**
  * Class Bootstrap
- * @package Samerior\MobileMoney\Mpesa\Library\Core
+ * @package Samerior\MobileMoney\Mpesa\Library\Bootstrap
  */
 class Bootstrap
 {
@@ -40,7 +40,6 @@ class Bootstrap
      * @param MpesaCache $mpesaCache
      * @param Mpesa $mpesa
      * @param Http $http
-     * @throws \Samerior\MobileMoney\Mpesa\Exceptions\MpesaException
      */
     public function __construct(MpesaConfig $mpesaConfig, MpesaCache $mpesaCache, Mpesa $mpesa, Http $http)
     {

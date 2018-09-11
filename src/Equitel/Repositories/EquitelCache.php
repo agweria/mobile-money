@@ -1,14 +1,14 @@
 <?php
 
-namespace Samerior\MobileMoney\Mpesa\Repositories;
+namespace Samerior\MobileMoney\Equitel\Repositories;
 
 use Illuminate\Cache\Repository;
 
 /**
- * Class MpesaCache
- * @package Samerior\MobileMoney\Mpesa\Repositories
+ * Class EquitelCache
+ * @package Samerior\MobileMoney\Equitel\Repositories
  */
-class MpesaCache
+class EquitelCache
 {
     /**
      * @var Repository
@@ -17,7 +17,7 @@ class MpesaCache
     /**
      * @var string
      */
-    private $short_name = 'samerior.mpesa';
+    private $short_name = 'samerior.equitel';
 
     /**
      * MpesaCache constructor.
@@ -52,4 +52,5 @@ class MpesaCache
     {
         $this->repository->put($this->short_name . '.' . $key, $value, $minutes);
     }
+
 }

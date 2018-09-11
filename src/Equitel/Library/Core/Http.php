@@ -1,14 +1,12 @@
 <?php
 
-namespace Samerior\MobileMoney\Mpesa\Library\Core;
+namespace Samerior\MobileMoney\Equitel\Library\Core;
 
 use GuzzleHttp\Client;
-use Samerior\MobileMoney\Mpesa\Library\Auth\Authenticator;
-use Samerior\MobileMoney\Mpesa\Repositories\EndpointsRepository;
 
 /**
  * Class Http
- * @package Samerior\MobileMoney\Mpesa\Library\Bootstrap
+ * @package Samerior\MobileMoney\Equitel\Library\Core
  */
 class Http
 {
@@ -16,9 +14,6 @@ class Http
      * @var Client
      */
     public $client;
-    /**
-     * @var Authenticator
-     */
     private $auth;
 
     /**
@@ -34,7 +29,6 @@ class Http
      * @param string $endpoint
      * @return \Psr\Http\Message\ResponseInterface
      * @throws \GuzzleHttp\Exception\GuzzleException
-     * @throws \Samerior\MobileMoney\Mpesa\Exceptions\MpesaException
      * @throws \Throwable
      */
     public function makeRequest($body, $endpoint): \Psr\Http\Message\ResponseInterface
@@ -51,22 +45,5 @@ class Http
                 'json' => $body,
             ]
         );
-    }
-
-    /**
-     * Send request for bearer token
-     * @param string $credentials
-     * @return \Psr\Http\Message\ResponseInterface
-     * @throws \Samerior\MobileMoney\Mpesa\Exceptions\MpesaException
-     */
-    public function authRequest($credentials): \Psr\Http\Message\ResponseInterface
-    {
-        $endpoint = EndpointsRepository::build('auth');
-        return $this->client->get($endpoint, [
-            'headers' => [
-                'Authorization' => 'Basic ' . $credentials,
-                'Content-Type' => 'application/json',
-            ],
-        ]);
     }
 }
