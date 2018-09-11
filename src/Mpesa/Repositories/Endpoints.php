@@ -5,11 +5,11 @@ namespace Samerior\MobileMoney\Mpesa\Repositories;
 use Samerior\MobileMoney\Mpesa\Exceptions\MpesaException;
 
 /**
- * Class EndpointsRepository
+ * Class Endpoints
  *
  * @package Samerior\MobileMoney\Mpesa\Repositories
  */
-class EndpointsRepository
+class Endpoints
 {
 
     /**
@@ -57,7 +57,7 @@ class EndpointsRepository
      * @throws \Exception
      * @throws MpesaException
      */
-    public static function build($endpoint)
+    public static function build($endpoint): string
     {
         return self::getEndpoint($endpoint);
     }

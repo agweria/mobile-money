@@ -93,6 +93,7 @@ class StkPush extends ApiCore
      * @throws \Samerior\MobileMoney\Mpesa\Exceptions\MpesaException
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws \Exception
+     * @throws \Throwable
      */
     public function push()
     {

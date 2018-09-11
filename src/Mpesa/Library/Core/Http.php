@@ -4,7 +4,7 @@ namespace Samerior\MobileMoney\Mpesa\Library\Core;
 
 use GuzzleHttp\Client;
 use Samerior\MobileMoney\Mpesa\Library\Auth\Authenticator;
-use Samerior\MobileMoney\Mpesa\Repositories\EndpointsRepository;
+use Samerior\MobileMoney\Mpesa\Repositories\Endpoints;
 
 /**
  * Class Http
@@ -61,7 +61,7 @@ class Http
      */
     public function authRequest($credentials): \Psr\Http\Message\ResponseInterface
     {
-        $endpoint = EndpointsRepository::build('auth');
+        $endpoint = Endpoints::build('auth');
         return $this->client->get($endpoint, [
             'headers' => [
                 'Authorization' => 'Basic ' . $credentials,

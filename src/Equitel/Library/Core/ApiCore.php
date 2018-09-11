@@ -3,6 +3,7 @@
 namespace Samerior\MobileMoney\Equitel\Library\Core;
 
 use Samerior\MobileMoney\Equitel\Exceptions\EquitelException;
+use Samerior\MobileMoney\Equitel\Repositories\Endpoints;
 
 /**
  * Class ApiCore
@@ -55,28 +56,19 @@ class ApiCore
         throw_unless(\strlen($number) === 12, EquitelException::class, 'Invalid Phone number');
         return $number;
     }
+
     /**
      * @param array $body
      * @param string $endpoint
      * @return mixed
-     * @throws MpesaException
      * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Exception
+     * @throws \Throwable
      */
     public function sendRequest($body, $endpoint)
     {
-        $endpoint = EndpointsRepository::build($endpoint);
+        $endpoint = Endpoints::build($endpoint);
         return $this->core->http->makeRequest($body, $endpoint);
-        dd(get_defined_vars());
-        try {
-            $response = $this->makeRequest($body, $endpoint);
-            $_body = \json_decode($response->getBody());
-            if ($response->getStatusCode() !== 200) {
-                throw new MpesaException($_body->errorMessage ? $_body->errorCode . ' - ' . $_body->errorMessage : $response->getBody());
-            }
-            return $_body;
-        } catch (ClientException $exception) {
-            throw $this->generateException($exception);
-        }
     }
 
 }

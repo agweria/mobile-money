@@ -2,9 +2,9 @@
 
 namespace Samerior\MobileMoney\Equitel;
 
-use Samerior\MobileMoney\Equitel\Library\StkRequest;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
+use Samerior\MobileMoney\Equitel\Library\B2C\CreatePayment;
 
 /**
  * Class EquitelServiceProvider
@@ -12,11 +12,22 @@ use Illuminate\Support\ServiceProvider;
  */
 class EquitelServiceProvider extends ServiceProvider
 {
+    /**
+     * @var string
+     */
+    private $short_name = 'samerior.mobile-money.equitel.';
+
     public function register()
     {
-        $this->app->bind('samerior.equitel', function (Application $app) {
-            return $app->make(StkRequest::class);
-        });
+        $this->registerFacades();
+
         $this->mergeConfigFrom(__DIR__ . '/../../config/samerior.equitel.php', 'samerior.equitel');
+    }
+
+    private function registerFacades()
+    {
+        $this->app->bind('samerior.equitel', function (Application $app) {
+            return $app->make(CreatePayment::class);
+        });
     }
 }

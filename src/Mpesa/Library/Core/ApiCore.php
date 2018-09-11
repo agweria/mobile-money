@@ -3,7 +3,7 @@
 namespace Samerior\MobileMoney\Mpesa\Library\Core;
 
 use Samerior\MobileMoney\Mpesa\Exceptions\MpesaException;
-use Samerior\MobileMoney\Mpesa\Repositories\EndpointsRepository;
+use Samerior\MobileMoney\Mpesa\Repositories\Endpoints;
 use Samerior\MobileMoney\Mpesa\Repositories\Mpesa;
 use GuzzleHttp\Exception\ClientException;
 
@@ -70,7 +70,7 @@ class ApiCore
      */
     public function sendRequest($body, $endpoint)
     {
-        $endpoint = EndpointsRepository::build($endpoint);
+        $endpoint = Endpoints::build($endpoint);
         return $this->core->http->makeRequest($body, $endpoint);
     }
 }
