@@ -33,13 +33,9 @@ class MpesaServiceProvider extends ServiceProvider
      * Register the service provider.
      *
      * @return void
-     * @throws Exceptions\MpesaException
      */
     public function register()
     {
-//        $this->app->bind(Bootstrap::class, function ($app) {
-//            return $app->make(Bootstrap::class);
-//        });
         $this->commands(
             [
                 Registra::class,

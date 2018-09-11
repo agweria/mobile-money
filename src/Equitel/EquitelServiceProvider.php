@@ -17,5 +17,6 @@ class EquitelServiceProvider extends ServiceProvider
         $this->app->bind('samerior.equitel', function (Application $app) {
             return $app->make(StkRequest::class);
         });
+        $this->mergeConfigFrom(__DIR__ . '/../../config/samerior.equitel.php', 'samerior.equitel');
     }
 }
