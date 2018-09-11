@@ -49,6 +49,4 @@ class Endpoints
     {
         return self::getEndpoint($endpoint);
     }
-
-
 }
