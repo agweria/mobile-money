@@ -10,6 +10,5 @@ class EquitelRepository
 {
     public function saveResponse($body)
     {
-
     }
 }

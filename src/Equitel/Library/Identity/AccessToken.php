@@ -44,7 +44,7 @@ class AccessToken
                 'Authorization' => 'Basic ' . $credentials,
             ], 'form_params' => $body
         ];
-       return $this->core->http->client->post($endpoint, $options);
+        return $this->core->http->client->post($endpoint, $options);
     }
 
     /**

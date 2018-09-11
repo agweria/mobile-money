@@ -70,5 +70,4 @@ class ApiCore
         $endpoint = Endpoints::build($endpoint);
         return $this->core->http->makeRequest($body, $endpoint);
     }
-
 }

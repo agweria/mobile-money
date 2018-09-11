@@ -52,5 +52,4 @@ class EquitelCache
     {
         $this->repository->put($this->short_name . '.' . $key, $value, $minutes);
     }
-
 }
