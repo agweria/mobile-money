@@ -1,14 +1,14 @@
 <?php
-namespace Samerior\MobileMoney\Equity\Library;
+namespace Samerior\MobileMoney\Equitel\Library;
 
 /**
- * Class EquityRepository
- * @package Samerior\MobileMoney\Equity\Library
+ * Class EquitelRepository
+ * @package Samerior\MobileMoney\Equitel\Library
  */
-class EquityRepository
+class EquitelRepository
 {
     /**
-     * The Equity API Endpoint.
+     * The Equitel API Endpoint.
      *
      * @var string
      */

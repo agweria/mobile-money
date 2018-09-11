@@ -2,7 +2,7 @@
 
 namespace Samerior\MobileMoney;
 
-use Samerior\MobileMoney\Equity\EquityServiceProvider;
+use Samerior\MobileMoney\Equitel\EquitelServiceProvider;
 use Samerior\MobileMoney\Mpesa\MpesaServiceProvider;
 use Illuminate\Support\ServiceProvider;
 
@@ -16,7 +16,7 @@ class MobileMoneyServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->register(MpesaServiceProvider::class);
-        $this->app->register(EquityServiceProvider::class);
+        $this->app->register(EquitelServiceProvider::class);
     }
 
     public function boot()

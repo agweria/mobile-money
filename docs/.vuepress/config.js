@@ -17,7 +17,7 @@ module.exports = {
                 text: 'Developer Portal',
                 items: [
                     {text: 'Safaricom Developer Portal', link: 'https://developer.safaricom.co.ke/'},
-                    {text: 'Equity Developer Portal', link: 'https://developers.equitybankgroup.com/'},
+                    {text: 'Equitel Developer Portal', link: 'https://developers.equitybankgroup.com/'},
                 ]
             }
         ],
@@ -39,7 +39,7 @@ module.exports = {
                 ]
             },
             {
-                title:'Equity',
+                title:'Equitel',
                 collapsable:true,
                 children:[
                     ['/guide/equity/','Introduction']

@@ -1,6 +1,6 @@
 <?php
 
-namespace Samerior\MobileMoney\Equity\Library;
+namespace Samerior\MobileMoney\Equitel\Library;
 
 class Validator
 {

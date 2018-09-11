@@ -1,10 +1,10 @@
 <?php
 
-namespace Samerior\MobileMoney\Equity\Library;
+namespace Samerior\MobileMoney\Equitel\Library;
 
 /**
  * Class StkRequest
- * @package Samerior\MobileMoney\Equity\Library
+ * @package Samerior\MobileMoney\Equitel\Library
  */
 class StkRequest
 {
@@ -76,7 +76,7 @@ class StkRequest
 
     private function formatPhoneNumber(&$number)
     {
-        if (strlen($number) === 10) {
+        if (\strlen($number) === 10) {
             $needle = '07';
             if (starts_with($number, $needle)) {
                 $pos = strpos($number, $needle);

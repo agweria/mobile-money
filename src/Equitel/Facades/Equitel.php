@@ -1,13 +1,13 @@
 <?php
-namespace Samerior\MobileMoney\Equity\Facades;
+namespace Samerior\MobileMoney\Equitel\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
- * Class Equity
- * @package Samerior\MobileMoney\Equity\Facades
+ * Class Equitel
+ * @package Samerior\MobileMoney\Equitel\Facades
  */
-class Equity extends Facade
+class Equitel extends Facade
 {
     /**
      * Get the registered name of the component.
@@ -16,6 +16,6 @@ class Equity extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'equity';
+        return 'samerior.equitel';
     }
 }

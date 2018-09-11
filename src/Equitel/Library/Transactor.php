@@ -1,16 +1,16 @@
 <?php
 
-namespace Samerior\MobileMoney\Equity\Library;
+namespace Samerior\MobileMoney\Equitel\Library;
 
 use Carbon\Carbon;
-use Samerior\MobileMoney\Exceptions\EquityException;
 use DOMDocument;
 use GuzzleHttp\Client;
 use Ixudra\Curl\Facades\Curl;
+use Samerior\MobileMoney\Exceptions\EquityException;
 
 /**
  * Class Transactor
- * @package Samerior\MobileMoney\Equity\Library
+ * @package Samerior\MobileMoney\Equitel\Library
  */
 class Transactor
 {
@@ -71,15 +71,15 @@ class Transactor
      */
     private $client;
     /**
-     * @var EquityRepository
+     * @var EquitelRepository
      */
     private $repository;
 
     /**
      * Transactor constructor.
-     * @param EquityRepository $repository
+     * @param EquitelRepository $repository
      */
-    public function __construct(EquityRepository $repository)
+    public function __construct(EquitelRepository $repository)
     {
         $this->client = new Client([
             'verify' => false,
