@@ -3,6 +3,7 @@
 namespace Samerior\MobileMoney\Equitel\Library\Core;
 
 use GuzzleHttp\Client;
+use Samerior\MobileMoney\Equitel\Library\Identity\AccessToken;
 
 /**
  * Class Http
@@ -33,7 +34,7 @@ class Http
      */
     public function makeRequest($body, $endpoint): \Psr\Http\Message\ResponseInterface
     {
-        $this->auth = app(Authenticator::class);
+        $this->auth = app(AccessToken::class);
         return $this->client->request(
             'POST',
             $endpoint,

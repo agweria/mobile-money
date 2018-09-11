@@ -18,6 +18,7 @@ class Endpoints
     private static function getEndpoint($section): string
     {
         $list = [
+            'access_token' => 'identity-sandbox/v1-sandbox/token',
             'create_payment' => 'transaction-sandbox/v1-sandbox/payments',
         ];
         if ($item = $list[$section]) {

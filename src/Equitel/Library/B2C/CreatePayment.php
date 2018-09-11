@@ -11,25 +11,6 @@ use Samerior\MobileMoney\Equitel\Library\Core\ApiCore;
  */
 class CreatePayment extends ApiCore
 {
-    /*
-     *  $url = $this->repository->endpoint->transaction . '/payments';
-            return Curl::to($url)
-                ->withHeader('Authorization: Bearer ' . $this->bearer)
-                ->returnResponseObject()
-                ->withData([
-                    'customer' => [
-                        'mobileNumber' => '254763555289'
-                    ],
-                    'transaction' => [
-                        "amount" => "50000",
-                        "description" => "Payment",
-                        "type" => "StkRequest Payment",
-                        "auditNumber" => $this->transactionNumber,
-                    ]
-                ])
-                ->asJson()
-                ->post();
-     */
     /**
      * @var string
      */
