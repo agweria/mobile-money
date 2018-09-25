@@ -17,8 +17,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $Balance
  * @property string|null $TransactionDate
  * @property string|null $PhoneNumber
- * @property \Carbon\Carbon|null $created_at
- * @property \Carbon\Carbon|null $updated_at
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Samerior\MobileMoney\Mpesa\Database\Entities\MpesaStkRequest $request
  * @method static \Illuminate\Database\Eloquent\Builder|\Samerior\MobileMoney\Mpesa\Database\Entities\MpesaStkCallback whereAmount($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Samerior\MobileMoney\Mpesa\Database\Entities\MpesaStkCallback whereBalance($value)

@@ -17,6 +17,7 @@ class CreateMpesaAppsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('short_code');
+            $table->string('company')->nullable();
             $table->enum('environment', ['sandbox', 'production'])->default('sandbox');
             $table->string('consumer_key');
             $table->string('consumer_secret');
