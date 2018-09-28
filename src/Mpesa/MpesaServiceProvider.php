@@ -4,6 +4,7 @@ namespace Samerior\MobileMoney\Mpesa;
 
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
+use Samerior\MobileMoney\Mpesa\Commands\AddApp;
 use Samerior\MobileMoney\Mpesa\Commands\Registra;
 use Samerior\MobileMoney\Mpesa\Commands\StkStatus;
 use Samerior\MobileMoney\Mpesa\Events\C2bConfirmationEvent;
@@ -40,6 +41,7 @@ class MpesaServiceProvider extends ServiceProvider
             [
                 Registra::class,
                 StkStatus::class,
+                AddApp::class,
             ]
         );
 
@@ -64,23 +66,23 @@ class MpesaServiceProvider extends ServiceProvider
     {
         $this->app->bind(
             $this->short_name . 'stk', function () {
-                return $this->app->make(StkPush::class);
-            }
+            return $this->app->make(StkPush::class);
+        }
         );
         $this->app->bind(
             $this->short_name . 'registrar', function () {
-                return $this->app->make(RegisterUrl::class);
-            }
+            return $this->app->make(RegisterUrl::class);
+        }
         );
         $this->app->bind(
             $this->short_name . 'identity', function () {
-                return $this->app->make(IdCheck::class);
-            }
+            return $this->app->make(IdCheck::class);
+        }
         );
         $this->app->bind(
             $this->short_name . 'b2c', function () {
-                return $this->app->make(BulkSender::class);
-            }
+            return $this->app->make(BulkSender::class);
+        }
         );
     }
 
