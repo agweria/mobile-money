@@ -10,7 +10,6 @@ use Samerior\MobileMoney\Mpesa\Commands\StkStatus;
 use Samerior\MobileMoney\Mpesa\Events\C2bConfirmationEvent;
 use Samerior\MobileMoney\Mpesa\Events\StkPushPaymentFailedEvent;
 use Samerior\MobileMoney\Mpesa\Events\StkPushPaymentSuccessEvent;
-use Samerior\MobileMoney\Mpesa\Http\Middlewares\MobileMoneyCors;
 use Samerior\MobileMoney\Mpesa\Library\BulkSender;
 use Samerior\MobileMoney\Mpesa\Library\C2B\RegisterUrl;
 use Samerior\MobileMoney\Mpesa\Library\C2B\StkPush;
@@ -55,8 +54,6 @@ class MpesaServiceProvider extends ServiceProvider
         $this->loadRoutesFrom(__DIR__ . '/Http/routes.php');
         $this->loadMigrationsFrom(__DIR__ . '/Database/Migrations');
         $this->publishes([__DIR__ . '/../../config/samerior.mpesa.php' => config_path('samerior.mpesa.php'),]);
-
-        $this->app['router']->aliasMiddleware('pesa.cors', MobileMoneyCors::class);
     }
 
     /**

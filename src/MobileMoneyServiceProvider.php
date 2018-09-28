@@ -3,6 +3,7 @@
 namespace Samerior\MobileMoney;
 
 use Samerior\MobileMoney\Equitel\EquitelServiceProvider;
+use Samerior\MobileMoney\Mpesa\Http\Middlewares\MobileMoneyCors;
 use Samerior\MobileMoney\Mpesa\MpesaServiceProvider;
 use Illuminate\Support\ServiceProvider;
 
@@ -23,6 +24,7 @@ class MobileMoneyServiceProvider extends ServiceProvider
     {
         $this->requireHelperScripts();
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'payments');
+        $this->app['router']->aliasMiddleware('pesa.cors', MobileMoneyCors::class);
     }
 
     private function requireHelperScripts()
