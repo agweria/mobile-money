@@ -39,4 +39,5 @@ use Illuminate\Database\Eloquent\Model;
  */
 class MpesaApp extends Model
 {
+    protected $guarded = ['default'];
 }

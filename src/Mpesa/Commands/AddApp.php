@@ -41,6 +41,7 @@ class AddApp extends Command
      */
     public function handle()
     {
-        $this->repository->addNewApp($this);
+        $app = $this->repository->setConsole($this)->addNewApp();
+        $this->info('App created with ID #' . $app->id);
     }
 }
