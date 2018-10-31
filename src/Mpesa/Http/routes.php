@@ -2,9 +2,9 @@
 Route::group([
     'prefix' => 'payments/admin',
     'namespace' => 'Samerior\MobileMoney\Mpesa\Http\Controllers'], function () {
-    Route::get('/', 'AdminController@apps');
-    Route::get('apps', 'AdminController@apps');
-});
+        Route::get('/', 'AdminController@apps');
+        Route::get('apps', 'AdminController@apps');
+    });
 Route::group([
     'prefix' => 'payments/api',
     'middleware' => 'pesa.cors',
