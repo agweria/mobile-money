@@ -46,5 +46,6 @@ class MigrationTest extends TestCase
         $this->assertEquals(70000, $request->amount);
         $this->assertEquals('ws_CO_02052018230213621', $request->CheckoutRequestID);
         $this->assertNotNull($request->created_at);
+        $this->assertEquals(1, $request->id);
     }
 }
