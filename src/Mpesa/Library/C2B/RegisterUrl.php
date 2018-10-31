@@ -90,6 +90,7 @@ class RegisterUrl extends ApiCore
      * @throws MpesaException
      * @throws \Exception
      * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Throwable
      */
     public function submit()
     {

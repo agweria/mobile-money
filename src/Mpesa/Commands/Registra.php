@@ -47,6 +47,7 @@ class Registra extends Command
      * @return mixed
      * @throws GuzzleException
      * @throws \Exception
+     * @throws \Throwable
      */
     public function handle()
     {
