@@ -66,23 +66,23 @@ class MpesaServiceProvider extends ServiceProvider
     {
         $this->app->bind(
             $this->short_name . 'stk', function () {
-            return $this->app->make(StkPush::class);
-        }
+                return $this->app->make(StkPush::class);
+            }
         );
         $this->app->bind(
             $this->short_name . 'registrar', function () {
-            return $this->app->make(RegisterUrl::class);
-        }
+                return $this->app->make(RegisterUrl::class);
+            }
         );
         $this->app->bind(
             $this->short_name . 'identity', function () {
-            return $this->app->make(IdCheck::class);
-        }
+                return $this->app->make(IdCheck::class);
+            }
         );
         $this->app->bind(
             $this->short_name . 'b2c', function () {
-            return $this->app->make(BulkSender::class);
-        }
+                return $this->app->make(BulkSender::class);
+            }
         );
     }
 
