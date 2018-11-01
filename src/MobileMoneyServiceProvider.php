@@ -38,6 +38,7 @@ class MobileMoneyServiceProvider extends ServiceProvider
         $this->requireHelperScripts();
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'payments');
         $this->app['router']->aliasMiddleware('pesa.cors', MobileMoneyCors::class);
+        $this->publishes([__DIR__ . '/../config/samerior.config.php' => config_path('samerior.config.php'),]);
     }
 
     private function requireHelperScripts()
