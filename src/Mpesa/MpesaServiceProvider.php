@@ -36,24 +36,27 @@ class MpesaServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->commands(
-            [
-                Registra::class,
-                StkStatus::class,
-                AddApp::class,
-            ]
-        );
-
         $this->registerFacades();
         $this->registerEvents();
+        if ($this->app->runningInConsole()) {
+            $this->commands(
+                [
+                    Registra::class,
+                    StkStatus::class,
+                    AddApp::class,
+                ]
+            );
+        }
         $this->mergeConfigFrom(__DIR__ . '/../../config/samerior.mpesa.php', 'samerior.mpesa');
     }
 
     public function boot()
     {
         $this->loadRoutesFrom(__DIR__ . '/Http/routes.php');
-        $this->loadMigrationsFrom(__DIR__ . '/Database/Migrations');
-        $this->publishes([__DIR__ . '/../../config/samerior.mpesa.php' => config_path('samerior.mpesa.php'),]);
+        if ($this->app->runningInConsole()) {
+            $this->loadMigrationsFrom(__DIR__ . '/Database/Migrations');
+            $this->publishes([__DIR__ . '/../../config/samerior.mpesa.php' => config_path('samerior.mpesa.php'),]);
+        }
     }
 
     /**
@@ -63,23 +66,23 @@ class MpesaServiceProvider extends ServiceProvider
     {
         $this->app->bind(
             $this->short_name . 'stk', function () {
-                return $this->app->make(StkPush::class);
-            }
+            return $this->app->make(StkPush::class);
+        }
         );
         $this->app->bind(
             $this->short_name . 'registrar', function () {
-                return $this->app->make(RegisterUrl::class);
-            }
+            return $this->app->make(RegisterUrl::class);
+        }
         );
         $this->app->bind(
             $this->short_name . 'identity', function () {
-                return $this->app->make(IdCheck::class);
-            }
+            return $this->app->make(IdCheck::class);
+        }
         );
         $this->app->bind(
             $this->short_name . 'b2c', function () {
-                return $this->app->make(BulkSender::class);
-            }
+            return $this->app->make(BulkSender::class);
+        }
         );
     }
 
