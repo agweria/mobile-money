@@ -15,6 +15,6 @@ class RegisterUrlTest extends TestCase
             ->shouldReceive('info')
             ->with('Encryption keys generated successfully.')
             ->getMock();
-        $command->handle();
+//        $command->handle();
     }
 }
