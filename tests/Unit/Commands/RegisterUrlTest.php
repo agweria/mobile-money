@@ -8,7 +8,7 @@ use Samerior\MobileMoney\Tests\TestCase;
  */
 class RegisterUrlTest extends TestCase
 {
-//    /** @test */
+    /** @test */
     public function it_has_the_register_command()
     {
         $command = Mockery::mock(Registra::class)->makePartial()
