@@ -9,6 +9,11 @@ use Illuminate\Support\ServiceProvider;
 
 class MobileMoneyServiceProvider extends ServiceProvider
 {
+    private $_providers = [
+        'mpesa' => MpesaServiceProvider::class,
+        'equitel' => EquitelServiceProvider::class,
+    ];
+
     /**
      * Register any package services.
      *
@@ -16,8 +21,16 @@ class MobileMoneyServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->register(MpesaServiceProvider::class);
-        $this->app->register(EquitelServiceProvider::class);
+        $this->mergeConfigFrom(__DIR__ . '/../config/samerior.config.php', 'samerior.config');
+        $this->registerAdditionalProviders();
+    }
+
+    private function registerAdditionalProviders()
+    {
+        $enabled = config('samerior.config.enabled_providers');
+        foreach ($enabled as $_item) {
+            $this->app->register($this->_providers[$_item]);
+        }
     }
 
     public function boot()
