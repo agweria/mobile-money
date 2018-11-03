@@ -65,13 +65,20 @@ class MpesaApps
             'environment' => $mode,
             'name' => $name,
             'short_code' => $this->prompt('Short Code / Paybill /Till NUmber'),
-            'consumer_key' => $this->prompt('Consumer key'),
-            'consumer_secret' => $this->prompt('Consumer secret'),
-            'passkey' => $this->prompt('Passkey', true),
+            'consumer_key' => $this->prompt('Consumer key (From Developer Portal)'),
+            'consumer_secret' => $this->prompt('Consumer secret (From Developer Portal)'),
+            'passkey' => $this->prompt('Passkey (From Mpesa)', true),
             'type' => $type,
-            'initiator_name' => $this->prompt('Initiator Name'),
-            'initiator_credentials' => $this->prompt('Initiator Credentials'),
+            'initiator_name' => $this->prompt('Initiator Name (From Mpesa Portal)'),
         ];
+        $get_credentials = function () {
+            $pass = trim($this->prompt('Initiator Password  (From Mpesa Portal)'));
+            if (!empty($pass)) {
+                return generate_mpesa_security_credential($pass);
+            }
+            return null;
+        };
+        $app['initiator_credentials'] = $get_credentials();
         return MpesaApp::create($app);
     }
 

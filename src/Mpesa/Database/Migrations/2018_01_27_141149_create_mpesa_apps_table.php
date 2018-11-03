@@ -23,7 +23,7 @@ class CreateMpesaAppsTable extends Migration
             $table->string('consumer_secret');
             $table->string('passkey')->nullable();
             $table->string('initiator_name')->nullable();
-            $table->string('initiator_credentials')->nullable();
+            $table->longText('initiator_credentials')->nullable();
             $table->string('type')->default('c2b');
             $table->boolean('default')->default(false);
             $table->timestamps();
