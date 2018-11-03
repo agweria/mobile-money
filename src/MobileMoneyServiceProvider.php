@@ -2,16 +2,22 @@
 
 namespace Samerior\MobileMoney;
 
+use Samerior\MobileMoney\AirtelMoney\AirtelMoneyServiceProvider;
 use Samerior\MobileMoney\Equitel\EquitelServiceProvider;
 use Samerior\MobileMoney\Mpesa\Http\Middlewares\MobileMoneyCors;
 use Samerior\MobileMoney\Mpesa\MpesaServiceProvider;
 use Illuminate\Support\ServiceProvider;
 
+/**
+ * Class MobileMoneyServiceProvider
+ * @package Samerior\MobileMoney
+ */
 class MobileMoneyServiceProvider extends ServiceProvider
 {
     private $_providers = [
         'mpesa' => MpesaServiceProvider::class,
         'equitel' => EquitelServiceProvider::class,
+        'airtel' => AirtelMoneyServiceProvider::class,
     ];
 
     /**
@@ -33,6 +39,9 @@ class MobileMoneyServiceProvider extends ServiceProvider
         }
     }
 
+    /**
+     * Boot
+     */
     public function boot()
     {
         $this->requireHelperScripts();
@@ -43,6 +52,9 @@ class MobileMoneyServiceProvider extends ServiceProvider
         }
     }
 
+    /**
+     * Load helper file in Support Directory
+     */
     private function requireHelperScripts()
     {
         $files = glob(__DIR__ . '/Support/*.php');

@@ -9,6 +9,19 @@ These include:
 
 ## Getting Started
 
+::: tip New in v2.0+
+
+You need to enable mpesa in config `samerior.config.php`
+```php
+//
+//
+'enabled_providers' => [
+        'mpesa',
+        // other gateways
+]
+```
+:::
+
 #### Step 1: Creating an account on MPESA G2 Portal
 The MPESA G2 portal is an online platform where merchants access paybill or till number transactions. The purpose of this step is to create a user who will be sent a One Time Password (OTP) before going live. Although online, you need to install a certificate in your Windows Internet Explorer. Below is the procedure:
 
