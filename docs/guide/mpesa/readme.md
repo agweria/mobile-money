@@ -32,7 +32,7 @@ Click on the link in the auto-responder email to request the certificate.
 Unfortunately, MPESA will not inform you when the certificate is generated and you'll need to go back to the link in the email to install the certificate in Windows Internet Explorer. But you can use Chrome after installing. 
 :::
 
-If you don't have an account setup, kindly contact MPESA Business Support on M-PESABusiness@safaricom.co.ke or 0722002222 and request them to setup for you an account on MPESA G2 portal
+If you don't have an account setup, kindly contact MPESA Business Support on [M-PESABusiness@safaricom.co.ke](mailto:M-PESABusiness@safaricom.co.ke) or **0722002222** and request them to setup for you an account on MPESA G2 portal
 Login to the MPESA portal by going to [https://org.ke.m-pesa.com](https://org.ke.m-pesa.com/), go to  *Operator Management* and create a user and give the user `Business Manager` and all roles that have an `API` word in them
 Ensure you set your phone number to get notification via SMS and not email. For security purposes, the phone number will be sent a one time password (OTP) just before going live. 
 

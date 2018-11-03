@@ -43,6 +43,7 @@ module.exports = {
                     ['/guide/introduction', 'Introduction'],
                     ['/about', 'About Samerior Group'],
                     ['/guide/installation', 'Installation'],
+                    ['/guide/contacts', 'Getting Help'],
                     {
                         title: 'Mpesa',
                         collapsable: false,
