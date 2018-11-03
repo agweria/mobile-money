@@ -86,3 +86,18 @@ if (!function_exists('mpesa_simulate')) {
         return app(Simulate::class)->push($phone, $amount);
     }
 }
+if (!function_exists('generate_mpesa_security_credential')) {
+    /**
+     * @param string $password The user password
+     * @param bool $production
+     * @return string
+     */
+    function generate_mpesa_security_credential($password, $production = true)
+    {
+        $encrypted = null;
+        $path = $production ? __DIR__ . '/production.cer' : __DIR__ . '/sandbox.cer';
+        $key_file = trim(file_get_contents($path));
+        openssl_public_encrypt($password, $encrypted, $key_file, OPENSSL_PKCS1_PADDING);
+        return base64_encode($encrypted);
+    }
+}
