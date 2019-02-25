@@ -32,7 +32,7 @@
     "barryvdh/laravel-cors": "^0.11.2",
     "guzzlehttp/guzzle": "^6.3",
     "illuminate/support": "~5.5",
-    "jivesh/laravel-slack": "^2.0"
+    "jivesh/laravel-slack": "^2.1"
   },
   "require-dev": {
     "mockery/mockery": "^1.2",
