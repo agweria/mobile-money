@@ -123,7 +123,7 @@ return [
          * Slack webhook URL
          * https://my.slack.com/services/new/incoming-webhook/
          */
-        'slack_web_hook' => 'https://hooks.slack.com/services/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',
+        'slack_web_hook' => 'https://hooks.slack.com/services/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',
         /*
          * Get only important notifications
          * You wont be notified for failed stk push transactions
