@@ -29,7 +29,8 @@ If you discover any security related issues, please email *sam@samerior.com* ins
 
 ## Support
 
-- [Samuel Dervis ][link-author]  <sam@samerior.com>
+- Email:  <api-query@samerior.com>
+- Support Line: **+254707710547**
 
 ## License
 

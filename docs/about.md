@@ -5,6 +5,10 @@
 
 ## Contact
 
-Website: [samerior.com](https://www.samerior.com)
+Website: [www.samerior.com](https://www.samerior.com)
 
-Email:   [sam@samerior.com](mailto:sam@samerior.com)
+Email:   [info@samerior.com](mailto:info@samerior.com)
+
+Phone: **+254707710547**
+
+Facebook: [Samerior Group](https://www.facebook.com/sameriorGroup/)

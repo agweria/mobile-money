@@ -25,3 +25,4 @@ php artisan vendor:publish --provider="Samerior\MobileMoney\Equity\EquityService
 ```
 This will publish the mpesa configuration file into the `config` directory as
 `samerior.equity.php`. 
+
