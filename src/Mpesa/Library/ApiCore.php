@@ -2,6 +2,7 @@
 
 namespace Samerior\MobileMoney\Mpesa\Library;
 
+use Illuminate\Support\Str;
 use Samerior\MobileMoney\Mpesa\Exceptions\MpesaException;
 use Samerior\MobileMoney\Mpesa\Repositories\EndpointsRepository;
 use Samerior\MobileMoney\Mpesa\Repositories\Mpesa;
@@ -47,8 +48,8 @@ class ApiCore
     protected function formatPhoneNumber($number, $strip_plus = true): string
     {
         $number = preg_replace('/\s+/', '', $number);
-        $replace = function ($needle, $replacement) use (&$number) {
-            if (starts_with($number, $needle)) {
+        $replace = static function ($needle, $replacement) use (&$number) {
+            if (Str::startsWith($number, $needle)) {
                 $pos = strpos($number, $needle);
                 $length = \strlen($needle);
                 $number = substr_replace($number, $replacement, $pos, $length);
