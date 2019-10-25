@@ -16,6 +16,5 @@ class B2CFailedListener
      */
     public function handle(B2cPaymentFailedEvent $event)
     {
-
     }
 }

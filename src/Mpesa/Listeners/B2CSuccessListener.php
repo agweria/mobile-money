@@ -16,6 +16,5 @@ class B2CSuccessListener
      */
     public function handle(B2cPaymentSuccessEvent $event)
     {
-
     }
 }
