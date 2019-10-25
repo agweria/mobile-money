@@ -34,6 +34,7 @@ module.exports = {
                     ['/guide/mpesa/register', 'Register URL'],
                     ['/guide/mpesa/stk', 'STK Push'],
                     ['/guide/mpesa/c2b', 'C2B Events'],
+                    ['/guide/mpesa/b2c', 'B2C Payments'],
                     ['/guide/mpesa/faq', 'FAQ'],
                     ['/guide/mpesa/errors', 'Errors']
                 ]

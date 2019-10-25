@@ -26,7 +26,7 @@ See [this article about mobile money interoperability](https://www.standardmedia
 ## Features
 
 ### All Players
-  - This package works for Mpesa, Equitel, T-cash and Airtel MOney.
+  - This package works for Mpesa, Equitel, T-cash and Airtel Money.
   
 ### Minimal Configuration
   - This package handles the donkey-work, you just add your config and you should start processing payments
@@ -36,3 +36,10 @@ See [this article about mobile money interoperability](https://www.standardmedia
 
 
 
+### Glossary
+
+| Term | Name | Description
+| :------: | :-------- | :---------
+| C2B | Customer to Business | Accept payments from you customer to business account
+| B2C | Business to Customer Remittance | Send money from business account to customer
+| B2B | Business to Business Payment | Send money to another business from your business

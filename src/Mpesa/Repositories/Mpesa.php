@@ -2,6 +2,7 @@
 
 namespace Samerior\MobileMoney\Mpesa\Repositories;
 
+use Illuminate\Support\Arr;
 use Samerior\MobileMoney\Mpesa\Database\Entities\MpesaBulkPaymentRequest;
 use Samerior\MobileMoney\Mpesa\Database\Entities\MpesaBulkPaymentResponse;
 use Samerior\MobileMoney\Mpesa\Database\Entities\MpesaC2bCallback;
@@ -92,13 +93,13 @@ class Mpesa
         $response = null;
         if ($data['ResultCode'] !== 0) {
             $response = MpesaBulkPaymentResponse::updateOrCreate($seek,
-                array_only($data, $common));
+                Arr::only($data, $common));
             event(new B2cPaymentFailedEvent($response, $data));
             return $response;
         }
         $resultParameter = $data['ResultParameters'];
         $data['ResultParameters'] = json_encode($resultParameter);
-        $response = MpesaBulkPaymentResponse::updateOrCreate($seek, array_except($data, ['ReferenceData']));
+        $response = MpesaBulkPaymentResponse::updateOrCreate($seek, Arr::except($data, ['ReferenceData']));
         event(new B2cPaymentSuccessEvent($response, $data));
         return $response;
     }
