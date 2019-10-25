@@ -84,7 +84,7 @@ class Mpesa
      */
     private function handleB2cResult()
     {
-        $data = json_decode(request('Result'), true);
+        $data = request('Result')->toArray();
         $common = [
             'ResultType', 'ResultCode', 'ResultDesc', 'OriginatorConversationID', 'ConversationID', 'TransactionID'
         ];
@@ -92,8 +92,7 @@ class Mpesa
         /** @var MpesaBulkPaymentResponse $response */
         $response = null;
         if ($data['ResultCode'] !== 0) {
-            $response = MpesaBulkPaymentResponse::updateOrCreate($seek,
-                Arr::only($data, $common));
+            $response = MpesaBulkPaymentResponse::updateOrCreate($seek, Arr::only($data, $common));
             event(new B2cPaymentFailedEvent($response, $data));
             return $response;
         }

@@ -27,6 +27,12 @@ It comes with a admin section to monitor transactions, send money via b2c and re
 
 Read our beautiful documentation on [https://mobile-money.samerior.com](https://mobile-money.samerior.com)
 
+
+## Support
+
+- [API QUERY <api-query@samerior.com>][link-author]
+- [Official Telegram Channel](https://t.me/mobile_money_api)
+
 ## Testing
 
 Run the following command to test with phpunit
@@ -37,10 +43,6 @@ $ composer test
 ## Security
 
 If you discover any security related issues, please email *sam@samerior.com* instead of using the issue tracker.
-
-## Support
-
-- [Samuel Dervis <sam@samerior.com>][link-author]
 
 ## License
 

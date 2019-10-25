@@ -1,37 +1,62 @@
-# PHP CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-php/ for more details
-#
-version: 2
+version: 2.1
+executors:
+    php-executor:
+        docker:
+            - image: circleci/php:7.2-zts-node-browsers
+        working_directory: ~/repo
+    node-executor:
+        docker:
+            -   image: circleci/node:10
+        working_directory: ~/repo
 jobs:
+  dependencies:
+        executor: php-executor
+        steps:
+            - checkout
+            - restore_cache:
+                key: MobileMoney-{{ checksum "composer.json" }}-{{ .Branch }}
+                keys:
+                    - MM-{{ checksum "composer.json" }}-{{ .Branch }}
+            - run:
+                  name: Download Dependencies
+                  command: composer install
+            - save_cache:
+                key: MobileMoney-{{ checksum "composer.json" }}-{{ .Branch }}
+                paths: ~/.composer_cache
+                keys:
+                    - MM-{{ checksum "composer.json" }}-{{ .Branch }}
+            - persist_to_workspace:
+                root: .
+                paths: .
+  test:
+      executor: php-executor
+      steps:
+          - checkout
+          -   run:
+                  name: Download Dependencies
+                  command: vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
+          -   persist_to_workspace:
+                  root: .
+                  paths: .
   build:
-    docker:
-      # specify the version you desire here
-      - image: circleci/php:7.2-zts-node-browsers
-
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/mysql:9.4
-
-    working_directory: ~/repo
-
+    executor: php-executor
     steps:
       - checkout
+      - run: composer install
+  publish_release:
+      executor: node-executor
+      steps:
+          - attach_workspace:
+                at: .
+          - run:
+                name: Publish release
+                command: npx semantic-release
+workflows:
+    version: 2
+    test_build_tag:
+        jobs:
+            - dependencies
+            - test:
+                  requires:
+                      - dependencies
 
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "composer.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
-
-      - run: composer install -n --prefer-dist
-
-      - save_cache:
-          paths:
-            - ./vendor
-          key: v1-dependencies-{{ checksum "composer.json" }}
-
-      # run tests!
-      - run: vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
