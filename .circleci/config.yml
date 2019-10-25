@@ -13,9 +13,18 @@ jobs:
         executor: php-executor
         steps:
             - checkout
+            - restore_cache:
+                key: MobileMoney-{{ checksum "composer.json" }}-{{ .Branch }}
+                keys:
+                    - MM-{{ checksum "composer.json" }}-{{ .Branch }}
             - run:
                   name: Download Dependencies
-                  command: composer install -n --prefer-dist
+                  command: composer install
+            - save_cache:
+                key: MobileMoney-{{ checksum "composer.json" }}-{{ .Branch }}
+                paths: ~/.composer_cache
+                keys:
+                    - MM-{{ checksum "composer.json" }}-{{ .Branch }}
             - persist_to_workspace:
                 root: .
                 paths: .
@@ -33,7 +42,7 @@ jobs:
     executor: php-executor
     steps:
       - checkout
-      - run: composer install -n --prefer-dist
+      - run: composer install
   publish_release:
       executor: node-executor
       steps:
