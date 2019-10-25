@@ -92,8 +92,7 @@ class Mpesa
         /** @var MpesaBulkPaymentResponse $response */
         $response = null;
         if ($data['ResultCode'] !== 0) {
-            $response = MpesaBulkPaymentResponse::updateOrCreate($seek,
-                Arr::only($data, $common));
+            $response = MpesaBulkPaymentResponse::updateOrCreate($seek, Arr::only($data, $common));
             event(new B2cPaymentFailedEvent($response, $data));
             return $response;
         }

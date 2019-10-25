@@ -3,6 +3,7 @@
 
 namespace Samerior\MobileMoney\src\Mpesa\Listeners;
 
+use Samerior\MobileMoney\Mpesa\Database\Entities\MpesaBulkPaymentResponse;
 use Samerior\MobileMoney\Mpesa\Events\B2cPaymentSuccessEvent;
 
 /**
@@ -16,6 +17,5 @@ class B2CSuccessListener
      */
     public function handle(B2cPaymentSuccessEvent $event)
     {
-
     }
 }
