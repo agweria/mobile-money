@@ -25,7 +25,7 @@ jobs:
           - checkout
           -   run:
                   name: Download Dependencies
-                  command: composer install -n --prefer-dist
+                  command: vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
           -   persist_to_workspace:
                   root: .
                   paths: .
@@ -33,23 +33,7 @@ jobs:
     executor: php-executor
     steps:
       - checkout
-
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "composer.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
-
       - run: composer install -n --prefer-dist
-
-      - save_cache:
-          paths:
-            - ./vendor
-          key: v1-dependencies-{{ checksum "composer.json" }}
-
-      # run tests!
-      - run: vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
   publish_release:
       executor: node-executor
       steps:
