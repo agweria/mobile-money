@@ -105,8 +105,8 @@ class Authenticator
         $secret = \config('samerior.mpesa.c2b.consumer_secret');
         if ($this->alt) {
             //lazy way to switch to a different app in case of bulk
-            $key = \config('samerior.mpesa.bulk.consumer_key');
-            $secret = \config('samerior.mpesa.bulk.consumer_secret');
+            $key = \config('samerior.mpesa.b2c.consumer_key');
+            $secret = \config('samerior.mpesa.b2c.consumer_secret');
         }
         $this->credentials = \base64_encode($key . ':' . $secret);
         return $this;

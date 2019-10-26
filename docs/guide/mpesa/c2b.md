@@ -1,7 +1,10 @@
-### C2B Confirmation
+### C2B (Customer to Business) Confirmation
 
 The C2B Confirmation is sent to registered URL's above, 
-This confirmation is sent for both STK Push payment and User Initiated Payment _(Normal paybill number > Account NUmber > Amount > PIN or Till Number > Amount  > PIN)_
+
+This confirmation is sent for both STK Push payment and User Initiated Payment.
+
+_(Normal paybill number > Account Number > Amount > PIN or Till Number > Amount  > PIN)_
 
 You can get the payment payload in the event handler like above ...
 
@@ -28,3 +31,5 @@ Check properties below.
  * @property \Carbon\Carbon|null $created_at
  * @property \Carbon\Carbon|null $updated_at
 ```
+
+Also check the c2b events for declarative response

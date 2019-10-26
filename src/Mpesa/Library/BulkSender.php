@@ -33,16 +33,16 @@ class BulkSender extends ApiCore
     /**
      * Set number to receive the funds
      *
-     * @param  string $number
+     * @param string $number
      * @return $this
      */
-    public function to($number)
+    public function to($number): self
     {
         $this->number = $this->formatPhoneNumber($number);
         return $this;
     }
 
-    public function withRemarks($remarks)
+    public function withRemarks($remarks): self
     {
         $this->remarks = $remarks;
         return $this;
@@ -54,7 +54,7 @@ class BulkSender extends ApiCore
      * @param  $amount
      * @return $this
      */
-    public function amount($amount)
+    public function amount($amount): self
     {
         $this->amount = $amount;
         return $this;
@@ -72,15 +72,15 @@ class BulkSender extends ApiCore
     public function send($number = null, $amount = null, $remarks = null)
     {
         $body = [
-            'InitiatorName' => \config('samerior.mpesa.bulk.initiator'),
-            'SecurityCredential' => \config('samerior.mpesa.bulk.security_credential'),
+            'InitiatorName' => \config('samerior.mpesa.b2c.initiator'),
+            'SecurityCredential' => \config('samerior.mpesa.b2c.security_credential'),
             'CommandID' => 'BusinessPayment', //SalaryPayment,BusinessPayment,PromotionPayment
             'Amount' => $amount ?: $this->amount,
-            'PartyA' => \config('samerior.mpesa.bulk.short_code'),
+            'PartyA' => \config('samerior.mpesa.b2c.short_code'),
             'PartyB' => $this->formatPhoneNumber($number ?: $this->number),
             'Remarks' => $remarks ?: $this->remarks,
-            'QueueTimeOutURL' => \config('samerior.mpesa.bulk.timeout_url') . 'b2c',
-            'ResultURL' => \config('samerior.mpesa.bulk.result_url') . 'b2c',
+            'QueueTimeOutURL' => \config('samerior.mpesa.b2c.timeout_url') . 'b2c',
+            'ResultURL' => \config('samerior.mpesa.b2c.result_url') . 'b2c',
             'Occasion' => ' '
         ];
         $this->bulk = true;
