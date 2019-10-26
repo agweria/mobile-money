@@ -84,7 +84,13 @@ class Mpesa
      */
     private function handleB2cResult()
     {
-        $data = request('Result')->toArray();
+        $data = request('Result');
+
+        //check if data is an array
+        if (!is_array($data)) {
+            $data->toArray();
+        }
+
         $common = [
             'ResultType', 'ResultCode', 'ResultDesc', 'OriginatorConversationID', 'ConversationID', 'TransactionID'
         ];
