@@ -24,14 +24,15 @@
         }
     ],
     "require": {
-        "php": ">=7.1",
+        "php": ">=7.2",
+        "doctrine/dbal": "^2.9",
         "guzzlehttp/guzzle": "^6.4",
-        "illuminate/support": "~5.7",
+        "illuminate/support": "~6.0",
         "jivesh/laravel-slack": "^2.1"
     },
     "require-dev": {
-        "orchestra/testbench": "~3.6",
-        "squizlabs/php_codesniffer": "3.*"
+        "orchestra/testbench": "^4.3",
+        "squizlabs/php_codesniffer": "^3.5"
     },
     "autoload": {
         "psr-4": {

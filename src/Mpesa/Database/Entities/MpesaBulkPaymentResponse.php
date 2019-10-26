@@ -28,4 +28,9 @@ class MpesaBulkPaymentResponse extends Model
     {
         return $this->belongsTo(MpesaBulkPaymentRequest::class, 'ConversationID', 'conversation_id');
     }
+
+    public function data()
+    {
+        return $this->hasOne(MpesaB2cResultParameter::class, 'response_id');
+    }
 }

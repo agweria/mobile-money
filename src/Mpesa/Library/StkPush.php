@@ -61,8 +61,8 @@ class StkPush extends ApiCore
     /**
      * Set the mpesa reference
      *
-     * @param  string $reference
-     * @param  string $description
+     * @param string $reference
+     * @param string $description
      * @return $this
      * @throws \Exception
      * @throws MpesaException
@@ -81,10 +81,10 @@ class StkPush extends ApiCore
     /**
      * Send a payment request
      *
-     * @param  null|int $amount
-     * @param  null|string $number
-     * @param  null|string $reference
-     * @param  null|string $description
+     * @param null|int $amount
+     * @param null|string $number
+     * @param null|string $reference
+     * @param null|string $description
      * @return mixed
      * @throws \Samerior\MobileMoney\Mpesa\Exceptions\MpesaException
      * @throws \GuzzleHttp\Exception\GuzzleException

@@ -23,6 +23,10 @@ class CreateMpesaBulkPaymentResponsesTable extends Migration
             $table->string('TransactionID');
             $table->longText('ResultParameters')->nullable();
             $table->timestamps();
+
+            $table->foreign('ConversationID')
+                ->references('conversation_id')
+                ->on('mpesa_bulk_payment_requests')->onDelete('restrict')->onUpdate('restrict');
         });
     }
 

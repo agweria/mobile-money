@@ -2,7 +2,10 @@
 
 namespace Samerior\MobileMoney\Mpesa\Repositories;
 
+
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Log;
+use Samerior\MobileMoney\Mpesa\Database\Entities\MpesaB2cResultParameter;
 use Samerior\MobileMoney\Mpesa\Database\Entities\MpesaBulkPaymentRequest;
 use Samerior\MobileMoney\Mpesa\Database\Entities\MpesaBulkPaymentResponse;
 use Samerior\MobileMoney\Mpesa\Database\Entities\MpesaC2bCallback;
@@ -103,10 +106,19 @@ class Mpesa
             return $response;
         }
         $resultParameter = $data['ResultParameters'];
+
         $data['ResultParameters'] = json_encode($resultParameter);
         $response = MpesaBulkPaymentResponse::updateOrCreate($seek, Arr::except($data, ['ReferenceData']));
+        $this->saveResultParams($resultParameter, $response);
         event(new B2cPaymentSuccessEvent($response, $data));
         return $response;
+    }
+
+    private function saveResultParams(array $params, MpesaBulkPaymentResponse $response): \Illuminate\Database\Eloquent\Model
+    {
+        $params_payload = $params['ResultParameter'];
+        $new_params = Arr::pluck($params_payload, 'Value', 'Key');
+        return $response->data()->create($new_params);
     }
 
     /**
