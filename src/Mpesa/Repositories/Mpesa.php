@@ -2,7 +2,6 @@
 
 namespace Samerior\MobileMoney\Mpesa\Repositories;
 
-
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Log;
 use Samerior\MobileMoney\Mpesa\Database\Entities\MpesaB2cResultParameter;
