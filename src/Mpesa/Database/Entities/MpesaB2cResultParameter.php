@@ -2,7 +2,6 @@
 
 namespace Samerior\MobileMoney\Mpesa\Database\Entities;
 
-
 use Illuminate\Database\Eloquent\Model;
 
 /**
