@@ -27,7 +27,7 @@
         "php": ">=7.2",
         "doctrine/dbal": "^2.9",
         "guzzlehttp/guzzle": "^6.4",
-        "illuminate/support": "~6.0",
+        "illuminate/support": "5.5 - 6",
         "jivesh/laravel-slack": "^2.1"
     },
     "require-dev": {
