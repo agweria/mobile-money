@@ -32,7 +32,7 @@
         "illuminate/contracts": "~5.5|~6.0|~7.0",
         "illuminate/support": "~5.5|~6.0|~7.0",
         "illuminate/routing": "~5.5|~6.0|~7.0",
-        "illuminate/view": "~5.5|~6.0|~7.0"
+        "illuminate/view": "~5.5|~6.0|~7.0",
         "jivesh/laravel-slack": "^2.1"
     },
     "require-dev": {
