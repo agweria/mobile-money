@@ -1,6 +1,6 @@
 ---
 home: true
-heroImage: ./img/mobiles.jpeg
+heroImage: ./images/mobiles.jpeg
 actionText: Get Started →
 actionLink: /guide/
 
@@ -12,5 +12,5 @@ features:
 - title: Real Time
   details: We have leveraged the Laravel Event system and optional slack notifications to get all payment activity
 
-footer: MIT Licensed | Copyright © 2018 Samerior Group Ltd
+footer: MIT Licensed | Copyright © 2018 Agweria LLC
 ---

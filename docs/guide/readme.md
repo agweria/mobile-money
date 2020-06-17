@@ -32,8 +32,7 @@ If you discover any security related issues, please email *sam@samerior.com* ins
 Use the following options to seek help. Telegram channel is the quickest way to get help
 
 - [Official Telegram Channel](https://t.me/mobile_money_api)
-- Email:  <api-query@samerior.com>
-- Support Line: **+254707710547**
+- Email:  <opensource@agweria.com>
 
 
 ## License

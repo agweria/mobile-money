@@ -1,7 +1,14 @@
 
 ## The Company
 
-[Samerior Group LLC](https://www.samerior.com) is a consultation and software providing company in Kenya dedicated to provide robust and fully functional sophisticated software solutions. Our main area of expertise is software development. We have also brought many stakeholders in board to offer solutions for mobile, cloud, Business Intelligence and  Technology Infrastructure. We focus on delivering true, measurable business value to our clients. We have a passion for customer satisfaction and are dedicated to delivering dependable and reliable solutions that exceed client expectations.
+<style>
+.logoImage{
+max-height: 200px;
+}
+</style>
+<img :src="$withBase('/images/logo.png')" alt="Agweria Logo" class="logoImage">
+
+[Agweria LLC](https://agweria.com) is a consultation and software providing company in Kenya dedicated to provide robust and fully functional sophisticated software solutions. Our main area of expertise is software development. We have also brought many stakeholders in board to offer solutions for mobile, cloud, Business Intelligence and  Technology Infrastructure. We focus on delivering true, measurable business value to our clients. We have a passion for customer satisfaction and are dedicated to delivering dependable and reliable solutions that exceed client expectations.
 
 
 ## Our services
@@ -12,12 +19,10 @@ Do you want to accept online payments? Talk to us. We have experience integratin
 
 ## Contact
 
-Website: [www.samerior.com](https://www.samerior.com)
+Website: [agweria.com](https://agweria.com)
 
-Email:   [info@samerior.com](mailto:info@samerior.com)
-
-Phone: **+254707710547**
+Email:   [opensource@agweria.com](mailto:opensource@agweria.com)
 
 Telegram Channel: [https://t.me/mobile_money_api](https://t.me/mobile_money_api)
 
-Facebook: [Samerior Group](https://www.facebook.com/sameriorGroup/)
+Facebook: [Agweria](https://www.facebook.com/agweria)
