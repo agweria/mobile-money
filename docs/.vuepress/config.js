@@ -28,7 +28,7 @@ module.exports = {
         // editLinks: true,
         nav: [
             {text: 'Home', link: '/'},
-            {text: 'Agweria Ltd', link: 'https://agweria.com'},
+            {text: 'Agweria LLC', link: 'https://agweria.com'},
             {
                 text: 'Developer Portal',
                 items: [
@@ -40,7 +40,7 @@ module.exports = {
         sidebar: [
             '/',
             ['/guide/introduction', 'Introduction'],
-            ['/about', 'About Agweria Ltd'],
+            ['/about', 'About Agweria LLC'],
             ['/guide/installation', 'Installation'],
             {
                 title: 'Mpesa',
