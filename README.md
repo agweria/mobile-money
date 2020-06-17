@@ -25,7 +25,7 @@ It comes with a admin section to monitor transactions, send money via b2c and re
 
 ## Documentation
 
-Read our beautiful documentation on [https://mobile-money.samerior.com](https://mobile-money.samerior.com)
+Read our beautiful documentation on [https://mobile-money.agweria.com](https://mobile-money.agweria.com)
 
 
 ## Support
