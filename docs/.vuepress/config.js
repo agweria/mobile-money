@@ -14,7 +14,7 @@ module.exports = {
         ['meta', {name: 'msapplication-TileImage', content: '/images/icons/icon-144x144.png'}],
         ['meta', {name: 'msapplication-TileColor', content: '#000000'}]
     ],
-    ga: 'UA-119008638-1',
+    ga: 'UA-172467681-1',
     plugins: [
         ['@vuepress/pwa',
             {
