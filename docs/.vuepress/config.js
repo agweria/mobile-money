@@ -14,14 +14,21 @@ module.exports = {
         ['meta', {name: 'msapplication-TileImage', content: '/images/icons/icon-144x144.png'}],
         ['meta', {name: 'msapplication-TileColor', content: '#000000'}]
     ],
-    ga: 'UA-172467681-1',
     plugins: [
         ['@vuepress/pwa',
             {
                 serviceWorker: true,
                 updatePopup: true
             }
-        ]
+        ],
+        '@vuepress/plugin-back-to-top',
+    '@vuepress/plugin-medium-zoom',
+    [
+      '@vuepress/google-analytics',
+      {
+        'ga': 'UA-172467681-1' // UA-00000000-0
+      }
+    ]
     ],
     themeConfig: {
         repo: 'samerior/mobile-money',
