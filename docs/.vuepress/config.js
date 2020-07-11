@@ -5,30 +5,16 @@ module.exports = {
     serviceWorker: true,
     head: [
         ['link', {rel: 'icon', href: `/favicon.ico`}],
-        ['link', {rel: 'manifest', href: '/manifest.json'}],
-        ['meta', {name: 'theme-color', content: '#3eaf7c'}],
-        ['meta', {name: 'apple-mobile-web-app-capable', content: 'yes'}],
-        ['meta', {name: 'apple-mobile-web-app-status-bar-style', content: 'black'}],
-        ['link', {rel: 'apple-touch-icon', href: '/images/icons/icon-152x152.png'}],
-        ['link', {rel: 'mask-icon', href: '/images/icons/icon-152x152.png', color: '#3eaf7c'}],
-        ['meta', {name: 'msapplication-TileImage', content: '/images/icons/icon-144x144.png'}],
-        ['meta', {name: 'msapplication-TileColor', content: '#000000'}]
     ],
     plugins: [
-        ['@vuepress/pwa',
-            {
-                serviceWorker: true,
-                updatePopup: true
-            }
-        ],
         '@vuepress/plugin-back-to-top',
-    '@vuepress/plugin-medium-zoom',
-    [
-      '@vuepress/google-analytics',
-      {
-        'ga': 'UA-172467681-1' // UA-00000000-0
-      }
-    ]
+        '@vuepress/plugin-medium-zoom',
+        [
+            '@vuepress/google-analytics',
+            {
+                'ga': 'UA-172467681-1' // UA-00000000-0
+            }
+        ]
     ],
     themeConfig: {
         repo: 'samerior/mobile-money',
@@ -36,6 +22,7 @@ module.exports = {
         nav: [
             {text: 'Home', link: '/'},
             {text: 'Agweria LLC', link: 'https://agweria.com'},
+            {text: 'Agweria Pay', link: 'https://pay.agweria.com'},
             {
                 text: 'Developer Portal',
                 items: [
@@ -48,6 +35,7 @@ module.exports = {
             '/',
             ['/guide/introduction', 'Introduction'],
             ['/about', 'About Agweria LLC'],
+            ['/agweriapay', 'Agweria Pay'],
             ['/guide/installation', 'Installation'],
             {
                 title: 'Mpesa',
