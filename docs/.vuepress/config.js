@@ -8,6 +8,9 @@ module.exports = {
             rel: 'icon',
             href: `/favicon.ico`
         }],
+        ['script;,{
+         'data-ad-client':"ca-pub-3504592700082211", 'async':true ,src:"https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+         }],
         ['meta', {
             name: 'theme-color',
             content: '#c970b6'
