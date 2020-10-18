@@ -8,7 +8,7 @@ module.exports = {
             rel: 'icon',
             href: `/favicon.ico`
         }],
-        ['script;,{
+        ['script';,{
          'data-ad-client':"ca-pub-3504592700082211", 'async':true ,src:"https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
          }],
         ['meta', {
