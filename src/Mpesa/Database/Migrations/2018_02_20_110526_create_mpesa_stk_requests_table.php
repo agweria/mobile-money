@@ -13,7 +13,9 @@ class CreateMpesaStkRequestsTable extends Migration
      */
     public function up()
     {
-        Schema::create('mpesa_stk_requests', function (Blueprint $table) {
+        Schema::create(
+            'mpesa_stk_requests',
+            function (Blueprint $table) {
             $table->increments('id');
             $table->string('phone');
             $table->double('amount', 10, 2);

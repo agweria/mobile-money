@@ -13,7 +13,9 @@ class CreateMpesaC2bCallbacksTable extends Migration
      */
     public function up()
     {
-        Schema::create('mpesa_c2b_callbacks', function (Blueprint $table) {
+        Schema::create(
+            'mpesa_c2b_callbacks',
+            function (Blueprint $table) {
             $table->increments('id');
             $table->string('TransactionType');
             $table->string('TransID')->unique();

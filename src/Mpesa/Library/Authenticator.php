@@ -119,7 +119,9 @@ class Authenticator
     private function makeRequest(): ResponseInterface
     {
         return $this->engine->client->request(
-            'GET', $this->endpoint, [
+            'GET',
+            $this->endpoint,
+            [
                 'headers' => [
                     'Authorization' => 'Basic ' . $this->credentials,
                     'Content-Type' => 'application/json',
