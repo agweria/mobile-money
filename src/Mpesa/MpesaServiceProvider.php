@@ -69,22 +69,26 @@ class MpesaServiceProvider extends ServiceProvider
     private function registerFacades()
     {
         $this->app->bind(
-            'mpesa_stk', function () {
+            'mpesa_stk',
+            function () {
                 return $this->app->make(StkPush::class);
             }
         );
         $this->app->bind(
-            'mpesa_registrar', function () {
+            'mpesa_registrar',
+            function () {
                 return $this->app->make(RegisterUrl::class);
             }
         );
         $this->app->bind(
-            'mpesa_identity', function () {
+            'mpesa_identity',
+            function () {
                 return $this->app->make(IdCheck::class);
             }
         );
         $this->app->bind(
-            'mpesa_b2c', function () {
+            'mpesa_b2c',
+            function () {
                 return $this->app->make(BulkSender::class);
             }
         );
