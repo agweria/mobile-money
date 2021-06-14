@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Samerior\MobileMoney\src\Mpesa\Listeners;
+namespace Samerior\MobileMoney\Mpesa\Listeners;
 
 use Samerior\MobileMoney\Mpesa\Database\Entities\MpesaBulkPaymentResponse;
 use Samerior\MobileMoney\Mpesa\Events\B2cPaymentSuccessEvent;
