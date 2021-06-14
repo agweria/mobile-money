@@ -27,12 +27,12 @@
         "php": ">=7.2",
         "doctrine/dbal": "^2.9",
         "guzzlehttp/guzzle": "^6.4",
-        "illuminate/cache": "~5.5|~6.0|~7.0",
-        "illuminate/container": "~5.5|~6.0|~7.0",
-        "illuminate/contracts": "~5.5|~6.0|~7.0",
-        "illuminate/support": "~5.5|~6.0|~7.0",
-        "illuminate/routing": "~5.5|~6.0|~7.0",
-        "illuminate/view": "~5.5|~6.0|~7.0",
+        "illuminate/cache": "~5.5|~6.0|~7.0|~8.0",
+        "illuminate/container": "~5.5|~6.0|~7.0|~8.0",
+        "illuminate/contracts": "~5.5|~6.0|~7.0|~8.0",
+        "illuminate/support": "~5.5|~6.0|~7.0|~8.0",
+        "illuminate/routing": "~5.5|~6.0|~7.0|~8.0",
+        "illuminate/view": "~5.5|~6.0|~7.0|~8.0",
         "jivesh/laravel-slack": "^2.1"
     },
     "require-dev": {
