@@ -2,9 +2,8 @@
 
 namespace Samerior\MobileMoney\Mpesa\Repositories;
 
+use Carbon\Carbon;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Log;
-use Samerior\MobileMoney\Mpesa\Database\Entities\MpesaB2cResultParameter;
 use Samerior\MobileMoney\Mpesa\Database\Entities\MpesaBulkPaymentRequest;
 use Samerior\MobileMoney\Mpesa\Database\Entities\MpesaBulkPaymentResponse;
 use Samerior\MobileMoney\Mpesa\Database\Entities\MpesaC2bCallback;
@@ -107,7 +106,7 @@ class Mpesa
         $resultParameter = $data['ResultParameters'];
 
         $data['ResultParameters'] = json_encode($resultParameter);
-        $response = MpesaBulkPaymentResponse::updateOrCreate($seek, Arr::except($data, ['ReferenceData']));
+        $response = MpesaBulkPaymentResponse::updateOrCreate($seek, Arr::except($data, ['ReferenceData', 'ResultParameters']));
         $this->saveResultParams($resultParameter, $response);
         event(new B2cPaymentSuccessEvent($response, $data));
         return $response;
@@ -117,6 +116,14 @@ class Mpesa
     {
         $params_payload = $params['ResultParameter'];
         $new_params = Arr::pluck($params_payload, 'Value', 'Key');
+
+//        Note: Added this for date conversion otherwise throws db error
+        $new_params['TransactionCompletedDateTime'] = Carbon::createFromFormat(
+            'd.m.Y H:i:s',
+            $new_params['TransactionCompletedDateTime'],
+            'Africa/Nairobi'
+        );
+
         return $response->data()->create($new_params);
     }
 
